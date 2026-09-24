@@ -29,56 +29,71 @@ Not every project here is expected to become "finished." Some are proof of conce
 ## Repository Structure
 
 ```
-📦 codelabs
-├─ README.md
-└─ backend
-   ├─ .env.example
-   ├─ .gitignore
-   ├─ .vsls.json
-   └─ js
-      └─ node
-         ├─ concepts
-         │  └─ cjs
-         │     ├─ db
-         │     │  ├─ sqlite
-         │     │  │  └─ native
-         │     │  │     ├─ api.rest
-         │     │  │     ├─ index.ts
-         │     │  │     ├─ package.json
-         │     │  │     └─ schema.ts
-         │     │  └─ supabase
-         │     │     ├─ .env.example
-         │     │     ├─ api.http
-         │     │     ├─ db.ts
-         │     │     ├─ index.ts
-         │     │     ├─ package-lock.json
-         │     │     ├─ package.json
-         │     │     └─ types.ts
-         │     ├─ os
-         │     │  ├─ index.ts
-         │     │  ├─ package-lock.json
-         │     │  └─ package.json
-         │     └─ server
-         │        ├─ mvp
-         │        │  ├─ index.ts
-         │        │  └─ package.json
-         │        └─ routes
-         │           ├─ index.ts
-         │           └─ package.json
-         ├─ frameworks
-         │  └─ express
-         │     ├─ cjs
-         │     │  └─ server
-         │     │     └─ mvp
-         │     │        ├─ index.ts
-         │     │        └─ package.json
-         │     ├─ package-lock.json
-         │     └─ package.json
-         ├─ package-lock.json
-         ├─ package.json
-         └─ tsconfig.json
-```
+codelabs/
+├── README.md
+└── backend/
+    ├── .env.example
+    ├── .gitignore
+    ├── .vsls.json
+    └── js/
+        └── node/
+            ├── concepts/
+            │   └── cjs/
+            │       ├── db/
+            │       │   ├── sqlite/
+            │       │   │   └── native/
+            │       │   │       ├── api.rest
+            │       │   │       ├── index.ts
+            │       │   │       ├── package.json
+            │       │   │       └── schema.ts
+            │       │   └── supabase/
+            │       │       ├── api.http
+            │       │       ├── index.ts
+            │       │       ├── package-lock.json
+            │       │       └── package.json
+            │       ├── os/
+            │       │   ├── index.ts
+            │       │   ├── package-lock.json
+            │       │   └── package.json
+            │       └── server/
+            │           ├── mvp/
+            │           │   ├── index.ts
+            │           │   └── package.json
+            │           └── routes/
+            │               ├── index.ts
+            │               └── package.json
+            ├── frameworks/
+            │   └── express/
+            │       ├── cjs/
+            │       │   ├── db/
+            │       │   │   └── sqlite/
+            │       │   │       └── native/
+            │       │   │           ├── api.rest
+            │       │   │           ├── index.ts
+            │       │   │           └── package.json
+            │       │   └── server/
+            │       │       └── mvp/
+            │       │           ├── index.ts
+            │       │           └── package.json
+            │       ├── package-lock.json
+            │       └── package.json
+            ├── package-lock.json
+            ├── package.json
+            ├── tsconfig.json
+            └── utils/
+                └── db/
+                    ├── sqlite/
+                    │   ├── schema.ts
+                    │   └── types.ts
+                    └── supabase/
+                        ├── config/
+                        │   ├── .env.example
+                        │   ├── db.ts
+                        │   └── types.ts
+                        ├── package-lock.json
+                        └── package.json
 
+```
 
 ## Purpose
 
