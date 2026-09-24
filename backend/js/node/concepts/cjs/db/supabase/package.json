@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node --env-file-if-exists=./.env index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch --env-file=../../../../../../.env.example --env-file=../../../../utils/db/supabase/config/.env index.ts"
+    "dev": "node --watch --env-file=../../../../utils/server/.env.example --env-file=../../../../utils/db/supabase/config/.env index.ts"
   },
   "keywords": [],
   "author": "Thiago Nogueira",

@@ -1,0 +1,13 @@
+@baseUrl = http://localhost:3000
+
+###
+
+GET {{baseUrl}}
+
+###
+
+GET {{baseUrl}}/about
+
+###
+
+GET {{baseUrl}}/contact

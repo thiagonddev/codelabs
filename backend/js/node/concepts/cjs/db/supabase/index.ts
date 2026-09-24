@@ -1,15 +1,14 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import type { CreateUser } from "../../../../utils/db/supabase/config/types";
+import type { CreateUser } from "../../../../utils/db/types";
 
 const http = require("node:http");
-const supabase = require("../../../../utils/db/supabase/config/db.ts");
 
-const PORT = Number(process.env.PORT ?? 3000);
+const supabase = require("../../../../utils/db/supabase/db.ts");
 
-const isInvalid = !Number.isInteger(PORT) || PORT < 1 || PORT > 65535;
+const { PORT, isInvalid } = require('../../../../utils/server/config.ts')
 
 if (isInvalid) {
-  throw new Error("Invalid port");
+  throw new Error("Environment variable does not contain a valid port number");
 }
 
 const server = http.createServer(

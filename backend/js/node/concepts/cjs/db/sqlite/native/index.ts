@@ -1,10 +1,12 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
-import type { Message } from "./schema.ts";
+
+import type { Message } from "../../../../../utils/db/sqlite/schema.js";
 
 const { DatabaseSync } = require("node:sqlite");
 const http = require("node:http");
-const { schema } = require("./schema.ts");
+
+const { schema } = require("../../../../../utils/db/sqlite/schema.ts");
 
 const PORT = Number(process.env.PORT ?? 3000);
 
