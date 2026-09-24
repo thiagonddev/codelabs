@@ -1,12 +1,17 @@
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
 import type { Application } from "express";
+
 import type { Message } from "../../../../../../utils/db/sqlite/schema";
 
 const { DatabaseSync } = require("node:sqlite");
 const express = require("express");
-const { schema } = require("../../../../../../utils/db/sqlite/schema.ts");
 
-const PORT = Number(process.env.PORT ?? 3000);
+const { schema } = require("../../../../../../utils/db/sqlite/schema.ts");
+const { PORT, isInvalid } = require('../../../../../../utils/server/config.ts')
+
+if (isInvalid) {
+  throw new Error("Environment variable does not contain a valid port number");
+}
 
 const db: DBConfigType = new DatabaseSync("sqlite.db");
 
@@ -19,7 +24,7 @@ try {
 
 const app: Application = express();
 
-app.get("/", (_, res) => {
+app.get("/", (_req, res) => {
   const query = db.prepare(schema.queries.selectAllMessages);
   const messages = query.all() as Message[];
 
@@ -40,7 +45,7 @@ app.get("/", (_, res) => {
   return res.json(usersList);
 });
 
-app.post("/", (_, res) => {
+app.post("/", (_req, res) => {
   try {
     const query = db.prepare(schema.queries.insertMessage);
 

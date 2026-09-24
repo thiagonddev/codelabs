@@ -1,14 +1,14 @@
-import type { Server } from "node:http";
+import type { IncomingRequest, ServerResponse } from "node:http";
 
 const http = require("node:http");
 
-const PORT = Number(process.env.PORT ?? 3000);
+const { PORT, isInvalid } = require('../../../../utils/server/config.ts')
 
-if (Number.isNaN(PORT)) {
-  throw new Error("Invalid PORT number");
+if (isInvalid) {
+  throw new Error("Environment variable does not contain a valid port number");
 }
 
-const server: Server = http.createServer((req, res) => {
+const server = http.createServer((req: IncomingRequest, res: ServerResponse) => {
   const host = req.headers.host ?? `localhost:${PORT}`;
   const url = new URL(req.url ?? "/", `http://${host}`);
 
