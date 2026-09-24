@@ -1,8 +1,8 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import type { CreateUser } from "./types";
+import type { CreateUser } from "../../../../utils/db/supabase/config/types";
 
 const http = require("node:http");
-const supabase = require("./db.ts");
+const supabase = require("../../../../utils/db/supabase/config/db.ts");
 
 const PORT = Number(process.env.PORT ?? 3000);
 
