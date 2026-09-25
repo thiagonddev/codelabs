@@ -1,0 +1,12 @@
+{
+  "name": "routes",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Thiago Nogueira",
+  "type": "commonjs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch --env-file=../../../../../utils/server/.env.example index.ts"
+  }
+}
