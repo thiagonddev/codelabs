@@ -23,7 +23,9 @@
 - New libraries and tools
 - Different solutions to the same problem
 
- Not everything here is meant to be finished. Some projects are quick proofs of concept, some compare technologies or implementations, while others are simply ideas I wanted to explore in code.
+ Not everything here is meant to be finished.
+ 
+ Some projects are quick proofs of concept, some compare technologies or implementations, while others are simply ideas I wanted to explore in code.
 
  Sometimes the goal isn't to build something production-ready. It's just to understand how something works.
 
@@ -38,7 +40,10 @@ codelabs/
 │       └── node/
 │           ├── concepts/       # Runtime and language experiments
 │           ├── frameworks/     # Framework-specific experiments
-│           └── utils/          # Utilities and integrations
+│           └── utils/          # Shared utilities and integrations
+│
+├── languages/
+│   └── bash/                   # Language and shell experiments
 │
 └── README.md
 ```
@@ -104,8 +109,10 @@ backend/js/node/
 
  This repository is intentionally a work in progress.
 
- Code, dependencies, conventions & folder structures may change often. Experiments may be refactored, replaced, abandoned or completely reorganized as I learn more.
+ Code, dependencies, conventions & folder structures may change often.
+ 
+ Experiments may be refactored, replaced, abandoned or completely reorganized as I learn more.
 
  That's part of the point.
 
-> **codelabs is about exploration, not perfection.**
+**codelabs is about exploration, not perfection.**
