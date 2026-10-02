@@ -85,9 +85,7 @@ backend/js/node/
 
  ## Philosophy
 
- The main goal is simple:
-
- **learn by building.**
+ The main goal is simple: **learn by building.**
 
  I use this repository to:
 
