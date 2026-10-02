@@ -1,18 +1,4 @@
-export type Schema = {
-    createTable: string
-    queries: {
-        selectAllMessages: string
-        insertMessage: string,
-        deleteMessage: string
-    }
-}
-
-export type Message = {
-    id: number,
-    username: string,
-    email: string,
-    message: string
-}
+import type { Schema } from "../types"
 
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS messages (

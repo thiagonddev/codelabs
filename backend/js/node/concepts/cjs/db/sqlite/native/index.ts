@@ -7,8 +7,11 @@ const { DatabaseSync } = require("node:sqlite");
 const http = require("node:http");
 
 const { schema } = require("../../../../../utils/db/sqlite/schema.ts");
+const { PORT, isInvalid } = require("../../../../../utils/server/config.ts");
 
-const PORT = Number(process.env.PORT ?? 3000);
+if (isInvalid) {
+  throw new Error("Environment variable does not contain a valid port number");
+}
 
 const db: DBConfigType = new DatabaseSync("sqlite.db");
 
