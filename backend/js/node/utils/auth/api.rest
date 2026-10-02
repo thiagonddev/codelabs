@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:3000
+@JSONContent = application/json
+
+# This password contains a hidden message
+@password = "01101010011101110111010000100000011101110110111101110010011010110111001100100001"
+
+### POST - Register an user
+POST {{baseUrl}}/register
+Content-Type: {{JSONContent}}
+
+{
+    "username": "thiagond",
+    "email": "thiagond360@gmail.com",
+    "password": {{password}}
+}
+
+### POST - Login an user
+# @name login
+POST {{baseUrl}}/login
+Content-Type: {{JSONContent}}
+
+{
+    "username": "thiagond",
+    "password": {{password}}
+}
+
+### GET - Access protected route
+GET {{baseUrl}}/me
+Authorization: Bearer {{login.response.body.$.token}}
