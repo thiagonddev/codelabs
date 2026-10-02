@@ -2,11 +2,11 @@
 
 ###
 
-GET {{baseUrl}}
+GET {{baseUrl}}/
 
 ###
 
-POST {{baseUrl}}
+POST {{baseUrl}}/
 
 ###
 
