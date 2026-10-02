@@ -16,7 +16,7 @@ const jwt = require("jsonwebtoken") as typeof JWT;
 
 const {
   schema,
-} = require("../../../../../../../../../../utils/auth/schema.ts");
+} = require("../../../../../../../../../../utils/auth/db/sqlite/native/schema.ts");
 
 const {
   PORT,
