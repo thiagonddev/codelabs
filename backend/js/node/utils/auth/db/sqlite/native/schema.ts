@@ -1,4 +1,4 @@
-import type { Schema } from "./types";
+import type { Schema } from "../../../types";
 
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS users (
