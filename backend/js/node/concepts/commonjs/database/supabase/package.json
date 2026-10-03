@@ -1,0 +1,15 @@
+{
+  "name": "node-supabase",
+  "version": "1.0.0",
+  "description": "A brief description of my Node.js application",
+  "main": "index.ts",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --env-file-if-exists=./.env index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch --env-file=../../../../shared/server/.env.example --env-file=../../../../shared/database/supabase/config/.env index.ts"
+  },
+  "keywords": [],
+  "author": "Thiago Nogueira",
+  "license": "ISC"
+}
