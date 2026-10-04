@@ -1,6 +1,7 @@
 import type { Application } from "express";
 
 const express = require("express");
+const helmet = require("helmet")
 
 const { PORT, isInvalid } = require("../../../../../shared/server/config.ts");
 
@@ -9,6 +10,8 @@ if (isInvalid) {
 }
 
 const app: Application = express();
+
+app.use(helmet())
 
 app.get("/", (_req, res) => {
     return res.send("Welcome! My name is Thiago.");

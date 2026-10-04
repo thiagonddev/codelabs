@@ -10,6 +10,7 @@ import type {
 
 const { DatabaseSync } = require("node:sqlite");
 const express = require("express");
+const helmet = require("helmet")
 
 const bcrypt = require("bcrypt") as typeof Bcrypt;
 const jwt = require("jsonwebtoken") as typeof JWT;
@@ -30,6 +31,7 @@ if (isInvalid) {
 const app: Express = express();
 
 app.use(express.json());
+app.use(helmet())
 
 const db: DBConfigType = new DatabaseSync("sqlite.db");
 
