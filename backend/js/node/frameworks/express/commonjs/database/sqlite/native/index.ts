@@ -1,10 +1,11 @@
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
 import type { Application } from "express";
 
-import type { Message } from "../../../../../../shared/database/sqlite/schema";
+import type { Message } from "../../../../../../shared/database/types";
 
 const { DatabaseSync } = require("node:sqlite");
 const express = require("express");
+const helmet = require("helmet")
 
 const { schema } = require("../../../../../../shared/database/sqlite/schema.ts");
 const { PORT, isInvalid } = require('../../../../../../shared/server/config.ts')
@@ -23,6 +24,8 @@ try {
 }
 
 const app: Application = express();
+
+app.use(helmet())
 
 app.get("/", (_req, res) => {
   const query = db.prepare(schema.queries.selectAllMessages);

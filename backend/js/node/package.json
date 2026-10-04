@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.0"
+  },
+  "dependencies": {
+    "helmet": "^8.3.0"
   }
 }
