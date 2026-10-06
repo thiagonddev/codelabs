@@ -2,21 +2,23 @@
 
  > A personal monorepo for experiments, prototypes & learning.
 
- ## Summary
+ ## About
 
  **codelabs** is my personal playground for trying new ideas, exploring technologies & experimenting with different ways of building software.
 
  It isn't a collection of polished portfolio projects.
- 
+
  It's a place to experiment, compare approaches, work with unfamiliar tools & break things without worrying about production quality.
 
- Think of it as a collection of **knowledge drafts**: small experiments that help me understand a concept and, sometimes, grow into something more complete.
+ Think of it as a collection of **knowledge drafts**: small experiments that help me understand a concept, explore a technology or test an approach.
+ 
+ Some may eventually grow into something more complete; others exist simply because I wanted to understand how something works.
 
  ## Topics
 
  The experiments in this repository cover different areas of software development, including:
 
- - Backend architectures
+- Backend architectures
 - Frameworks & runtimes
 - Database integrations
 - API design
@@ -30,8 +32,8 @@
  Some projects are quick proofs of concept; others compare technologies or implementations, while some are simply ideas I wanted to explore in code.
 
  Sometimes the goal isn't to build something production-ready.
- 
- It's simply to understand how something works.
+
+ It's simply to **understand how something works**.
 
  ## Structure
 
@@ -42,9 +44,9 @@ codelabs/
 ├── backend/
 │   └── js/
 │       └── node/
-│           ├── concepts/       # Runtime and language experiments
+│           ├── concepts/       # Node.js and runtime experiments
 │           ├── frameworks/     # Framework-specific experiments
-│           └── utils/          # Shared utilities and integrations
+│           └── shared/         # Shared experiments and infrastructure
 │
 ├── languages/
 │   └── bash/                   # Language experiments
@@ -57,8 +59,8 @@ codelabs/
 ```
 backend/js/node/
 ├── concepts/
-│   └── cjs/
-│       ├── db/
+│   └── commonjs/
+│       ├── database/
 │       │   ├── sqlite/
 │       │   └── supabase/
 │       ├── os/
@@ -66,14 +68,14 @@ backend/js/node/
 │
 ├── frameworks/
 │   └── express/
-│       └── cjs/
+│       └── commonjs/
 │           ├── auth/
-│           ├── db/
-│           └── server/
+│           ├── database/
+│           └── http/
 │
-└── utils/
+└── shared/
     ├── auth/
-    ├── db/
+    ├── database/
     │   ├── sqlite/
     │   └── supabase/
     └── server/
@@ -81,7 +83,9 @@ backend/js/node/
 
  Each experiment can contain whatever it needs: source code, dependencies, configuration, schemas, API examples & other supporting files.
 
- The structure isn't set in stone and will evolve as the repository grows.
+ There is no requirement for every experiment to follow the same structure.
+
+ The organization itself is part of the experimentation and will evolve as the repository grows.
 
  ## Philosophy
 
@@ -96,19 +100,23 @@ backend/js/node/
 - Build small, isolated experiments that may eventually grow into larger applications.
 - Keep a record of things I've learned along the way.
 
+ The code doesn't always need to be elegant.
+
+ It needs to be useful for learning.
+
  ## Current Focus
 
- Right now, most of the repository is focused on backend development with Node.js.
+ Most of the repository is currently focused on backend development with Node.js.
 
  Current experiments include:
 
- - HTTP server implementations
+- HTTP server implementations
 - Express
 - SQLite
 - Supabase
 - API structure & design
 - CommonJS & Node.js runtime behavior
-- Authentication & JWTs
+- Authentication
 - Project organization
 
  More languages, frameworks & technologies will be added as I explore them.
@@ -119,8 +127,14 @@ backend/js/node/
 
  Code, dependencies, conventions & folder structures may change often.
 
- Experiments may be refactored, replaced, abandoned or completely reorganized as I learn more.
-
  That's part of the point.
 
+ A small experiment doesn't need to become a complete project to be valuable.
+ 
+ Sometimes the most useful result is simply understanding why an approach works, why it doesn't or how it compares to another one.
+
+ ---
+ 
  > ### **codelabs is about exploration, not perfection.**
+
+---
