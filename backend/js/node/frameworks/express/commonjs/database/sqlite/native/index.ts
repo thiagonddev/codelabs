@@ -5,6 +5,7 @@ import type { Message } from "../../../../../../shared/database/types";
 
 const { DatabaseSync } = require("node:sqlite");
 const express = require("express");
+const cors = require("cors")
 const helmet = require("helmet")
 
 const { schema } = require("../../../../../../shared/database/sqlite/schema.ts");
@@ -25,6 +26,7 @@ try {
 
 const app: Application = express();
 
+app.use(cors())
 app.use(helmet())
 
 app.get("/", (_req, res) => {
