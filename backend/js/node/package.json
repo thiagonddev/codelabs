@@ -3,9 +3,11 @@
     "node": ">=24.18.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/node": "^24.0.0"
   },
   "dependencies": {
+    "cors": "^2.8.6",
     "helmet": "^8.3.0"
   }
 }
