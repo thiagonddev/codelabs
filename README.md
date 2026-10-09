@@ -97,11 +97,11 @@ node/
 └── tsconfig.json
 ```
 
-* `**concepts/**` — Experiments with Node.js APIs, runtime behavior & fundamental concepts.
+* **`concepts/`** — Experiments with Node.js APIs, runtime behavior & fundamental concepts.
 
-* `**frameworks/**` — Framework-specific experiments, integrations & implementation patterns.
+* **`frameworks/`** — Framework-specific experiments, integrations & implementation patterns.
 
-* `**shared/**` — Shared schemas, types, configuration & infrastructure used across experiments.
+* **`shared/`** — Shared schemas, types, configuration & infrastructure used across experiments.
 
 Individual experiments can contain their own source code, dependencies, configuration, database schemas, API examples & supporting files.
 
