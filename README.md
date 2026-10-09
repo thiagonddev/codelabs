@@ -1,63 +1,76 @@
 # codelabs
 
- > A personal monorepo for experiments, prototypes & learning.
+> _A personal monorepo for experiments, prototypes & learning_.
 
- ## About
+<br />
 
- **codelabs** is my personal playground for trying new ideas, exploring technologies & experimenting with different ways of building software.
+## About
 
- It isn't a collection of polished portfolio projects.
+**codelabs** is my personal playground for exploring technologies, experimenting with different approaches & learning how things really work.
 
- It's a place to experiment, compare approaches, work with unfamiliar tools & break things without worrying about production quality.
+It isn't a collection of polished portfolio projects.
 
- Think of it as a collection of **knowledge drafts**: small experiments that help me understand a concept, explore a technology or test an approach.
- 
- Some may eventually grow into something more complete; others exist simply because I wanted to understand how something works.
+It's a space to test ideas, compare implementations, explore unfamiliar tools & break things without the pressure of building production-ready software.
 
- ## Topics
+Think of it as a collection of **knowledge drafts**: small, focused experiments that help me understand a concept, evaluate a technology or investigate an approach.
 
- The experiments in this repository cover different areas of software development, including:
+Some experiments may eventually grow into something more complete.
 
-- Backend architectures
-- Frameworks & runtimes
-- Database integrations
-- API design
-- Project organization
-- Development workflows
-- Libraries & tools
-- Different solutions to the same problem
+Others exist simply because I wanted to understand how something works.
 
- Not everything here is meant to be finished.
+## Topics
 
- Some projects are quick proofs of concept; others compare technologies or implementations, while some are simply ideas I wanted to explore in code.
+The repository covers different areas of software development, including:
 
- Sometimes the goal isn't to build something production-ready.
+* Languages & runtimes
 
- It's simply to **understand how something works**.
+* Backend architectures
 
- ## Structure
+* Frameworks & libraries
 
- The repository is organized around areas of experimentation rather than a single application architecture.
+* Database integrations
+
+* HTTP servers & API design
+
+* Authentication
+
+* Project organization
+
+* Development workflows
+
+* Alternative implementations of the same problem
+
+The goal isn't always to build something production-ready.
+
+Sometimes, it's simply to **understand how something works**.
+
+## Structure
+
+The repository is organized around areas of experimentation rather than a single application or architectural pattern.
 
 ```
 codelabs/
-├── backend/
-│   └── js/
-│       └── node/
-│           ├── concepts/       # Node.js and runtime experiments
-│           ├── frameworks/     # Framework-specific experiments
-│           └── shared/         # Shared experiments and infrastructure
-│
 ├── languages/
-│   └── bash/                   # Language experiments
-│
+│   ├── bash/
+│   │   └── intro/
+│   └── js/
+│       └── backend/
+│           └── node/
+│               ├── concepts/
+│               ├── frameworks/
+│               ├── shared/
+│               ├── package.json
+│               └── tsconfig.json
+├── .vsls.json
 └── README.md
 ```
 
- Node.js experiments are further organized by the topic or technology being explored:
+### Node.js
+
+Node.js experiments are grouped by the concepts or technologies being explored.
 
 ```
-backend/js/node/
+node/
 ├── concepts/
 │   └── commonjs/
 │       ├── database/
@@ -73,68 +86,91 @@ backend/js/node/
 │           ├── database/
 │           └── http/
 │
-└── shared/
-    ├── auth/
-    ├── database/
-    │   ├── sqlite/
-    │   └── supabase/
-    └── server/
+├── shared/
+│   ├── auth/
+│   ├── database/
+│   │   ├── sqlite/
+│   │   └── supabase/
+│   └── server/
+│
+├── package.json
+└── tsconfig.json
 ```
 
- Each experiment can contain whatever it needs: source code, dependencies, configuration, schemas, API examples & other supporting files.
+* `**concepts/**` — Experiments with Node.js APIs, runtime behavior & fundamental concepts.
 
- There is no requirement for every experiment to follow the same structure.
+* `**frameworks/**` — Framework-specific experiments, integrations & implementation patterns.
 
- The organization itself is part of the experimentation and will evolve as the repository grows.
+* `**shared/**` — Shared schemas, types, configuration & infrastructure used across experiments.
 
- ## Philosophy
+Individual experiments can contain their own source code, dependencies, configuration, database schemas, API examples & supporting files.
 
- The main goal is simple: **learn by building.**
+There is no requirement for every experiment to follow the same internal structure.
 
- I use this repository to:
+Each one can be organized according to what makes sense for the subject being explored.
 
-- Learn new concepts through hands-on experimentation.
-- Compare different implementations & approaches.
-- Try technologies before introducing them into larger projects.
-- Explore unfamiliar tools & architectural patterns.
-- Build small, isolated experiments that may eventually grow into larger applications.
-- Keep a record of things I've learned along the way.
+## Philosophy
 
- The code doesn't always need to be elegant.
+The principle behind this repository is simple: **learn by building.**
 
- It needs to be useful for learning.
+I use it to:
 
- ## Current Focus
+* Explore unfamiliar concepts through hands-on experimentation.
 
- Most of the repository is currently focused on backend development with Node.js.
+* Compare implementations and architectural approaches.
 
- Current experiments include:
+* Evaluate technologies before using them in larger projects.
 
-- HTTP server implementations
-- Express
-- SQLite
-- Supabase
-- API structure & design
-- CommonJS & Node.js runtime behavior
-- Authentication
-- Project organization
+* Investigate runtime behavior, libraries & development tools.
 
- More languages, frameworks & technologies will be added as I explore them.
+* Build isolated proofs of concept without unnecessary complexity.
 
- ## Notes
+* Keep a record of experiments and lessons learned.
 
- This repository is intentionally a work in progress.
+The code doesn't always need to be elegant or complete.
 
- Code, dependencies, conventions & folder structures may change often.
+It needs to be useful for learning.
 
- That's part of the point.
+## Current Focus
 
- A small experiment doesn't need to become a complete project to be valuable.
- 
- Sometimes the most useful result is simply understanding why an approach works, why it doesn't or how it compares to another one.
+The repository currently focuses primarily on backend development with Node.js & TypeScript.
 
- ---
- 
- > ### **codelabs is about exploration, not perfection.**
+Areas of exploration include:
+
+* HTTP servers & routing
+
+* Express
+
+* SQLite & Supabase
+
+* Database integrations & schema design
+
+* API structure & design
+
+* CommonJS & Node.js runtime behavior
+
+* Authentication & password hashing
+
+* Project organization & shared infrastructure
+
+Other languages, frameworks & technologies will be added as I explore them.
+
+## Notes
+
+This repository is intentionally a work in progress.
+
+Code, dependencies, conventions & directory structures may change as experiments evolve.
+
+Some experiments may be incomplete, and others may never go beyond a proof of concept.
+
+That's part of the process.
+
+An experiment doesn't need to become a complete project to be valuable.
+
+Sometimes the most useful outcome is understanding why an approach works, why it doesn't or how it compares to an alternative.
+
+---
+
+> **_codelabs is about exploration, not perfection_.**
 
 ---
