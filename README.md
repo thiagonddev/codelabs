@@ -84,7 +84,7 @@ node/
 │       └── commonjs/
 │           ├── auth/
 │           ├── database/
-│           └── http/
+│           └── server/
 │
 ├── shared/
 │   ├── auth/
