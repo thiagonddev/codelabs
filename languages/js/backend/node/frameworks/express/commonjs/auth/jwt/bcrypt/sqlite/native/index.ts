@@ -6,7 +6,7 @@ import type JWT from "jsonwebtoken";
 import type {
   User,
   UserPayload,
-} from "../../../../../../../../../../shared/auth/types";
+} from "../../../../../../../../shared/auth/types";
 
 const { DatabaseSync } = require("node:sqlite");
 const express = require("express");
@@ -18,12 +18,12 @@ const jwt = require("jsonwebtoken") as typeof JWT;
 
 const {
   schema,
-} = require("../../../../../../../../../../shared/auth/database/sqlite/native/schema.ts");
+} = require("../../../../../../../../shared/auth/database/sqlite/native/schema.ts");
 
 const {
   PORT,
   isInvalid,
-} = require("../../../../../../../../../../shared/server/config.ts");
+} = require("../../../../../../../../shared/server/config.ts");
 
 if (isInvalid) {
   throw new Error("Environment variable does not contain a valid port number");

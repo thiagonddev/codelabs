@@ -4,10 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const {
-  PORT,
-  isInvalid,
-} = require("../../../../../../shared/server/config.ts");
+const { PORT, isInvalid } = require("../../../../../shared/server/config.ts");
 
 if (isInvalid) {
   throw new Error("Environment variable does not contain a valid port number");
