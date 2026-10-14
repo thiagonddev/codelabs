@@ -296,7 +296,7 @@ Understanding why an approach works, why it fails or how it compares to an alter
 
 <br />
 
-**_codelabs_** é meu espaço pessoal para explorar tecnologias, testar ideias e entender como o software funciona por baixo dos panos.
+**_codelabs_** é meu espaço pessoal para explorar tecnologias, testar ideias e entender como o _software_ funciona por baixo dos panos.
 
 <br />
 
