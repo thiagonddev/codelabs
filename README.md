@@ -401,8 +401,6 @@ node/
 
 #### `concepts/`
 
-<br />
-
 Experimentos voltados aos fundamentos do _Node.js_, às APIs nativas, ao comportamento do _runtime_ e a conceitos essenciais do desenvolvimento.
 
 <br />
@@ -418,8 +416,6 @@ Ex.:
 
 #### `frameworks/`
 
-<br />
-
 Experimentos voltados a frameworks específicos, integrações e padrões de implementação.
 
 As explorações atuais incluem aplicações _Express_, autenticação, integrações com bancos de dados e configuração de servidores.
@@ -427,8 +423,6 @@ As explorações atuais incluem aplicações _Express_, autenticação, integra�
 <br />
 
 #### `shared/`
-
-<br />
 
 Código reutilizável e infraestrutura de apoio compartilhados entre experimentos, incluindo:
 
