@@ -58,12 +58,12 @@ The repository covers different areas of software development, including:
 
 - Languages & runtimes
 - Backend architectures
-- Frameworks and libraries
-- Database integrations & schema design
-- HTTP servers and API design
-- Authentication & security
-- Project organization and shared infrastructure
-- Development workflows & tooling
+- Frameworks & libraries
+- Database integrations and schema design
+- HTTP servers & API design
+- Authentication and security
+- Project organization & shared infrastructure
+- Development workflows and tooling
 - Alternative implementations of the same problem
 
 <br />
@@ -199,13 +199,13 @@ Areas of exploration include:
 <br />
 
 - HTTP servers, routing & request handling
-- Express & middleware
+- Express and middleware
 - SQLite & Supabase integrations
-- Database schemas & data access
+- Database schemas and data access
 - API structure & design
-- CommonJS & Node.js runtime behavior
+- CommonJS and Node.js runtime behavior
 - Authentication, JWTs & password hashing
-- TypeScript configuration & project organization
+- TypeScript configuration and project organization
 - Shared infrastructure & reusable modules
 
 <br />
