@@ -12,5 +12,8 @@ node_modules/
 *.db
 *.sqlite
 
+# Ignore coverage test reports
+coverage/
+
 # Ignore text files
 *.txt
