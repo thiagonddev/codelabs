@@ -6,6 +6,7 @@ const tsJestTransformCfg = createDefaultPreset().transform;
 
 const config: Config = {
   coverageReporters: ["text", "text-summary", "html", "json", "json-summary"],
+  coverageDirectory: "tests/jest/coverage",
   testEnvironment: "node",
   transform: {
     ...tsJestTransformCfg,
