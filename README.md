@@ -1,5 +1,7 @@
 🇺🇸 **English** · [🇧🇷 Português](#-codelabs-1)
 
+<img width="1000" height="500" alt="Espaço de Código Codelabs" src="https://github.com/user-attachments/assets/e253983a-97d3-441f-b587-bcfbf6f4fd7f" />
+
 <br />
 
 # 🇺🇸 codelabs
