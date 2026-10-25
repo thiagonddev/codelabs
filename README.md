@@ -16,7 +16,7 @@
 
 <br />
 
-Rather than a collection of polished portfolio projects, this repository serves as a **hands-on laboratory for learning through implementation**. 
+Rather than a collection of polished portfolio projects, this repository serves as a **hands-on laboratory for learning through implementation**.
 
 Each experiment investigates a concept, explores a technology, tests an approach or compares different solutions to a problem.
 
@@ -65,10 +65,25 @@ Its current structure includes:
 <br />
 
 - **Bash:** introductory examples covering variables & conditional execution.
+
+<br />
+
 - **JavaScript / Node.js:** backend experiments involving runtime fundamentals, CommonJS, HTTP servers and database integrations.
+
+<br />
+
 - **Express:** framework-based implementations covering routing, CORS, database access & authentication.
+
+<br />
+
 - **Shared resources:** reusable types, database schemas, server configuration and HTTP request collections.
+
+<br />
+
 - **Testing:** Jest configuration & Supertest-based backend tests.
+
+<br />
+
 - **Tooling:** TypeScript configuration and a shell script for generating a file tree.
 
 <br />
@@ -86,16 +101,49 @@ The repository explores different aspects of software development, including:
 <br />
 
 - Programming languages, runtimes & built-in APIs.
+
+<br />
+
 - Backend development and server-side architectures.
+
+<br />
+
 - HTTP servers, routing, middleware & API design.
+
+<br />
+
 - Frameworks, libraries and native integrations.
+
+<br />
+
 - Database schemas, persistence & data access.
+
+<br />
+
 - SQLite and Supabase integrations.
+
+<br />
+
 - Authentication, JWTs & password hashing.
+
+<br />
+
 - JavaScript module systems and TypeScript configuration.
+
+<br />
+
 - Shared modules, dependency organization & project structure.
+
+<br />
+
 - Automated testing and development tooling.
+
+<br />
+
 - Alternative implementations of similar problems.
+
+<br />
+
 - Shell scripting & command-line fundamentals.
 
 <br />
@@ -164,6 +212,9 @@ Introductory shell scripting experiments covering:
 <br />
 
 - `variables.sh` — variable fundamentals.
+
+<br />
+
 - `conditions.sh` — conditional execution.
 
 <br />
@@ -199,8 +250,17 @@ Current areas include:
 <br />
 
 - **Database access:** native SQLite & Supabase integrations.
+
+<br />
+
 - **Operating system APIs:** experiments using the Node.js `os` module.
+
+<br />
+
 - **HTTP servers:** basic server implementations & route handling.
+
+<br />
+
 - **CommonJS:** module organization and runtime-level concepts.
 
 <br />
@@ -222,8 +282,17 @@ The directory contains experiments covering:
 <br />
 
 - **Server fundamentals:** basic applications & server entry points.
+
+<br />
+
 - **HTTP behavior:** routing and CORS configuration.
+
+<br />
+
 - **Database integration:** native SQLite implementations.
+
+<br />
+
 - **Authentication:** JWT-based flows, bcrypt password hashing & SQLite-backed authentication.
 
 <br />
@@ -245,9 +314,21 @@ Reusable resources for related experiments, including:
 <br />
 
 - Authentication types & database schemas.
+
+<br />
+
 - SQLite schemas and Supabase database integration.
+
+<br />
+
 - Shared database types.
+
+<br />
+
 - Server configuration.
+
+<br />
+
 - HTTP request collections for manual API exploration.
 
 <br />
@@ -300,8 +381,6 @@ The Jest configuration is located at `languages/js/jest.config.ts`, alongside th
 
 The `filetree.sh` script supports repository inspection by generating a directory-tree representation.
 
-<br />
-
 This small utility complements the repository's exploratory workflow by making its organization easier to inspect & document.
 
 <br />
@@ -347,15 +426,42 @@ Current areas of exploration include:
 <br />
 
 - Node.js runtime behavior, built-in APIs & CommonJS.
+
+<br />
+
 - HTTP servers, request handling and routing.
+
+<br />
+
 - Express applications, middleware & CORS.
+
+<br />
+
 - Native SQLite and Supabase integrations.
-- Database schemas, persistence and data access.
-- JWT-based authentication & bcrypt password hashing.
-- TypeScript types, declarations and compiler configuration.
-- Shared modules & dependency organization.
-- Automated testing with Jest and Supertest.
-- Bash variables & conditional execution.
+
+<br />
+
+- Database schemas, persistence & data access.
+
+<br />
+
+- JWT-based authentication and bcrypt password hashing.
+
+<br />
+
+- TypeScript types, declarations & compiler configuration.
+
+<br />
+
+- Shared modules and dependency organization.
+
+<br />
+
+- Automated testing with Jest & Supertest.
+
+<br />
+
+- Bash variables and conditional execution.
 
 <br />
 
@@ -380,11 +486,29 @@ I use this repository to:
 <br />
 
 - Explore unfamiliar concepts through practical implementations.
+
+<br />
+
 - Break complex systems into smaller, understandable experiments.
+
+<br />
+
 - Compare alternative solutions & architectural approaches.
+
+<br />
+
 - Investigate runtime behavior, APIs, dependencies and tooling.
+
+<br />
+
 - Understand the trade-offs between simplicity, abstraction, maintainability & flexibility.
+
+<br />
+
 - Test ideas in isolation before introducing them into larger projects.
+
+<br />
+
 - Preserve useful findings for future reference.
 
 <br />
@@ -394,6 +518,8 @@ Each experiment should have a learning objective, even when that objective is si
 <br />
 
 The code does not always need to be elegant, complete or production-ready.
+
+<br />
 
 Some experiments prioritize simplicity; others deliberately investigate a particular design decision or expose limitations in an initial approach.
 
@@ -537,16 +663,49 @@ O repositório explora diferentes aspectos do desenvolvimento de _software_, inc
 <br />
 
 - Linguagens de programação, _runtimes_ e APIs nativas.
+
+<br />
+
 - Desenvolvimento de _backend_ e arquiteturas do lado do servidor.
+
+<br />
+
 - Servidores HTTP, roteamento, _middlewares_ e _design_ de APIs.
+
+<br />
+
 - _Frameworks_, bibliotecas e integrações nativas.
+
+<br />
+
 - Esquemas de banco de dados, persistência e acesso a dados.
+
+<br />
+
 - Integrações com _SQLite_ e _Supabase_.
+
+<br />
+
 - Autenticação, JWTs e _hashing_ de senhas.
+
+<br />
+
 - Sistemas de módulos do _JavaScript_ e configuração do _TypeScript_.
+
+<br />
+
 - Módulos compartilhados, organização de dependências e estrutura de projetos.
+
+<br />
+
 - Testes automatizados e ferramentas de desenvolvimento.
+
+<br />
+
 - Implementações alternativas para problemas semelhantes.
+
+<br />
+
 - _Shell scripting_ e fundamentos da linha de comando.
 
 <br />
@@ -615,6 +774,9 @@ Experimentos introdutórios de _shell scripting_ que abordam:
 <br />
 
 - `variables.sh` — fundamentos de variáveis.
+
+<br />
+
 - `conditions.sh` — execução condicional.
 
 <br />
@@ -650,8 +812,17 @@ As áreas atuais incluem:
 <br />
 
 - **Acesso a bancos de dados:** integrações com _SQLite_ nativo e _Supabase_.
+
+<br />
+
 - **APIs do sistema operacional:** experimentos com o módulo `os` do _Node.js_.
+
+<br />
+
 - **Servidores HTTP:** implementações básicas de servidores e tratamento de rotas.
+
+<br />
+
 - **_CommonJS_:** organização de módulos e conceitos relacionados ao _runtime_.
 
 <br />
@@ -673,8 +844,17 @@ O diretório contém experimentos relacionados a:
 <br />
 
 - **Fundamentos de servidores:** aplicações básicas e pontos de entrada de servidores.
+
+<br />
+
 - **Comportamento HTTP:** roteamento e configuração de CORS.
+
+<br />
+
 - **Integração com bancos de dados:** implementações com _SQLite_ nativo.
+
+<br />
+
 - **Autenticação:** fluxos baseados em JWT, _hashing_ de senhas com _bcrypt_ e autenticação com persistência em _SQLite_.
 
 <br />
@@ -696,9 +876,21 @@ Recursos reutilizáveis para experimentos relacionados, incluindo:
 <br />
 
 - Tipos de autenticação e esquemas de banco de dados.
+
+<br />
+
 - Esquemas _SQLite_ e integração com o banco de dados _Supabase_.
+
+<br />
+
 - Tipos compartilhados relacionados a bancos de dados.
+
+<br />
+
 - Configuração de servidores.
+
+<br />
+
 - Coleções de requisições HTTP para exploração manual de APIs.
 
 <br />
@@ -728,7 +920,13 @@ Os testes atuais abrangem implementações _Express_ envolvendo:
 <br />
 
 - Comportamento básico de servidores.
+
+<br />
+
 - Tratamento de rotas HTTP.
+
+<br />
+
 - Integração com bancos de dados _SQLite_ nativos.
 
 <br />
@@ -792,14 +990,41 @@ As áreas de exploração atuais incluem:
 <br />
 
 - Comportamento do _runtime_ do _Node.js_, APIs nativas e _CommonJS_.
+
+<br />
+
 - Servidores HTTP, tratamento de requisições e roteamento.
+
+<br />
+
 - Aplicações _Express_, _middlewares_ e CORS.
+
+<br />
+
 - Integrações com _SQLite_ nativo e _Supabase_.
+
+<br />
+
 - Esquemas de banco de dados, persistência e acesso a dados.
+
+<br />
+
 - Autenticação baseada em JWT e _hashing_ de senhas com _bcrypt_.
+
+<br />
+
 - Tipos, declarações e configuração do compilador _TypeScript_.
+
+<br />
+
 - Módulos compartilhados e organização de dependências.
+
+<br />
+
 - Testes automatizados com _Jest_ e _Supertest_.
+
+<br />
+
 - Variáveis e execução condicional em _Bash_.
 
 <br />
@@ -825,11 +1050,29 @@ Utilizo este repositório para:
 <br />
 
 - Explorar conceitos desconhecidos por meio de implementações práticas.
+
+<br />
+
 - Dividir sistemas complexos em experimentos menores e compreensíveis.
+
+<br />
+
 - Comparar soluções alternativas e abordagens arquiteturais.
+
+<br />
+
 - Investigar o comportamento do _runtime_, APIs, dependências e ferramentas.
+
+<br />
+
 - Compreender os custos e benefícios relacionados à simplicidade, abstração, manutenibilidade e flexibilidade.
+
+<br />
+
 - Testar ideias isoladamente antes de incorporá-las a projetos maiores.
+
+<br />
+
 - Preservar descobertas úteis para consultas futuras.
 
 <br />
