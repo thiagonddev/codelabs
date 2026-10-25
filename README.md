@@ -18,6 +18,8 @@ Rather than a collection of polished portfolio projects, this repository serves 
 
 Each experiment investigates a concept, explores a technology, tests an approach or compares different solutions to a problem.
 
+<br />
+
 These experiments are **knowledge drafts**: small, focused explorations that prioritize understanding over completeness.
 
 <br />
@@ -451,6 +453,8 @@ O _`codelabs`_ é meu espaço pessoal para explorar tecnologias, testar ideias e
 Em vez de reunir apenas projetos de portfólio finalizados, este repositório funciona como um **laboratório prático de aprendizado por meio da implementação**. 
 
 Cada experimento investiga um conceito, explora uma tecnologia, testa uma abordagem ou compara diferentes soluções para um problema.
+
+<br />
 
 Esses experimentos são **rascunhos de conhecimento** (_knowledge drafts_): explorações pequenas e focadas que priorizam a compreensão em vez da completude. 
 
