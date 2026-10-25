@@ -4,7 +4,13 @@ updates:
   # Update dependencies in every Node.js project.
   - package-ecosystem: "npm"
     directories:
-      - "/languages/js/**"
+      - "/languages/js"
+      - "/languages/js/backend/node"
+      - "/languages/js/backend/node/frameworks/express
+      - "/languages/js/backend/node/frameworks/express/commonjs/auth/jwt"
+      - "/languages/js/backend/node/frameworks/express/commonjs/auth/jwt/bcrypt"
+      - "/languages/js/backend/node/shared/database/supabase"
+      - "/languages/js/tests/jest/backend/supertest"
     schedule:
       interval: "weekly"
       day: "monday"
