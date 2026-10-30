@@ -6,6 +6,6 @@
   "type": "commonjs",
   "main": "index.ts",
   "scripts": {
-    "dev": "node --watch --env-file=../../../../../../shared/server/.env.example index.ts"
+    "dev": "node --watch --env-file=../../../../../../shared/server/.env.example server.ts"
   }
 }
