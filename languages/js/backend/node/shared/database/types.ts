@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export type Schema = {
   createTable: string;
   queries: {
@@ -7,18 +9,18 @@ export type Schema = {
   };
 };
 
-export type Message = {
-  id: number;
-  username: string;
-  email: string;
-  message: string;
-};
+export const UserSchema = z.object({
+  username: z
+    .string("Invalid username format")
+    .trim()
+    .min(3, "Username must be at least 3 characters long")
+    .max(30, "Username must not exceed 30 characters long"),
+  email: z.string().trim().pipe(z.email("E-mail must have the valid format")),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Message must be at least 10 characters long")
+    .max(2000, "Message must not exceed 2,000 characters long"),
+});
 
-export type User = {
-  id: number;
-  username: string;
-  email: string;
-  message: string;
-};
-
-export type CreateUser = Omit<User, "id">;
+export type User = z.infer<typeof UserSchema>;

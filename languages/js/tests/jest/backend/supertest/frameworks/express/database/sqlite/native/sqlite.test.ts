@@ -1,7 +1,7 @@
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
 import type {
   Schema,
-  Message,
+  User
 } from "../../../../../../../../../backend/node/shared/database/types";
 
 const { DatabaseSync } = require("node:sqlite");
@@ -12,9 +12,8 @@ const createApp = require("../../../../../../../../../backend/node/frameworks/ex
 const schema =
   require("../../../../../../../../../backend/node/shared/database/sqlite/schema.ts") as Schema;
 
-const userMock = {
-  id: 1,
-  name: "Thiago Nogueira",
+const userMock: User = {
+  username: "Thiago Nogueira",
   email: "thiagond360@gmail.com",
   message: "This is a INSERT SQL statement!",
 };
@@ -43,16 +42,12 @@ describe("Express app", () => {
     });
 
     it("should return all messages as JSON", async () => {
-      db.prepare(schema.queries.insertMessage).run({
-        username: "Thiago Nogueira",
-        email: "thiagond360@gmail.com",
-        message: "This is a INSERT SQL statement!",
-      });
+      db.prepare(schema.queries.insertMessage).run(userMock);
 
       const response = await request(app).get("/");
 
       expect(response.status).toBe(200);
-      expect(response.body).toEqual([userMock]);
+      expect(response.body).toEqual([{ id: 1, ...userMock }]);
     });
 
     it("should return 500 when the SELECT * query fails", async () => {
@@ -68,6 +63,7 @@ describe("Express app", () => {
 
       expect(response.status).toBe(500);
       expect(response.text).toBe("Something went wrong");
+      
       expect(errorSpy).toHaveBeenCalledWith(
         "Error executing SQLite SELECT * query:",
         expect.any(Error),
@@ -84,7 +80,7 @@ describe("Express app", () => {
 
       const messages = db
         .prepare(schema.queries.selectAllMessages)
-        .all() as Message[];
+        .all() as User[];
 
       expect(messages).toHaveLength(1);
       expect(messages[0].username).toBe("Thiago Nogueira");
@@ -103,6 +99,7 @@ describe("Express app", () => {
 
       expect(response.status).toBe(500);
       expect(response.text).toBe("Something went wrong");
+      
       expect(errorSpy).toHaveBeenCalledWith(
         "Error executing SQLite INSERT query:",
         expect.any(Error),
@@ -126,11 +123,8 @@ describe("Express app", () => {
 
       expect(response.status).toBe(500);
       expect(response.text).toBe("Something went wrong");
-      expect(runMock).toHaveBeenCalledWith({
-        username: "Thiago Nogueira",
-        email: "thiagond360@gmail.com",
-        message: "This is a INSERT SQL statement!",
-      });
+      
+      expect(runMock).toHaveBeenCalledWith(userMock);
       expect(errorSpy).toHaveBeenCalledWith(
         "Error executing SQLite INSERT query:",
         expect.any(Error),
@@ -140,11 +134,7 @@ describe("Express app", () => {
 
   describe("DELETE /:id", () => {
     beforeEach(() => {
-      db.prepare(schema.queries.insertMessage).run({
-        username: "Thiago Nogueira",
-        email: "thiagond360@gmail.com",
-        message: "This is a DELETE SQL statement!",
-      });
+      db.prepare(schema.queries.insertMessage).run(userMock);
     });
 
     it("should delete the message successfully", async () => {
@@ -152,12 +142,7 @@ describe("Express app", () => {
 
       expect(response.status).toBe(200);
       expect(response.body.success).toBe(true);
-      expect(response.body.deletedUser).toEqual({
-        id: 1,
-        username: "Thiago Nogueira",
-        email: "thiagond360@gmail.com",
-        message: "This is a DELETE SQL statement!",
-      });
+      expect(response.body.deletedUser).toEqual({ id: 1, ...userMock });
 
       const messages = db.prepare(schema.queries.selectAllMessages).all();
 
@@ -196,6 +181,7 @@ describe("Express app", () => {
 
       expect(response.status).toBe(500);
       expect(response.text).toBe("Something went wrong");
+      
       expect(errorSpy).toHaveBeenCalledWith(
         "Error executing SQLite DELETE query:",
         expect.any(Error),
