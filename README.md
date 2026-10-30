@@ -3,6 +3,15 @@
 <img width="1000" height="500" alt="Espaço de Código Codelabs" src="https://github.com/user-attachments/assets/e253983a-97d3-441f-b587-bcfbf6f4fd7f" />
 
 <br />
+<br />
+
+<div align='center'>
+
+![Commits](https://shieldcn.dev/github/commits/thiagonddev/codelabs.svg?size=default&logo=ri%3AFiGitCommit&amp;mode=dark) ![Repo Last Commit](https://shieldcn.dev/github/last-commit/thiagonddev/codelabs.svg?size=default&logo=ri%3AFiGitCommit&amp;mode=dark)
+
+</div>
+
+<br />
 
 # 🇺🇸 codelabs
 
