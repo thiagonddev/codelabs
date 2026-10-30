@@ -11,9 +11,9 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^26.6.5",
     "jest": "^30.5.2",
-    "node-notifier": "^10.0.0",
+    "node-notifier": "^11.0.0",
     "ts-jest": "^29.4.15",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "zod": "^4.6.7"
