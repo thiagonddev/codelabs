@@ -1,7 +1,8 @@
 import type { DatabaseSync } from "node:sqlite";
 import type { Application } from "express";
+import type { z } from "zod";
 
-import type { Schema, User } from "../../../../../../shared/database/types";
+import type { Schema } from "../../../../../../shared/database/types";
 
 const express = require("express");
 const cors = require("cors");
@@ -10,24 +11,19 @@ const helmet = require("helmet");
 const schema =
   require("../../../../../../shared/database/sqlite/schema.ts") as Schema;
 
-const { UserSchema } = require('../../../../../../shared/database/types.ts')
+const { UserSchema } = require("../../../../../../shared/database/types.ts");
 
 function createApp(db: DatabaseSync): Application {
   const app: Application = express();
 
+  app.use(express.json());
   app.use(cors());
   app.use(helmet());
-
-  const userData: User = {
-    username: "Thiago Nogueira",
-    email: "thiagond360@gmail.com",
-    message: "This is a INSERT SQL statement!",
-  };
 
   app.get("/", (_req, res) => {
     try {
       const query = db.prepare(schema.queries.selectAllMessages);
-      const messages = query.all()
+      const messages = query.all();
 
       if (messages.length === 0) {
         return res.send("No messages were found");
@@ -43,16 +39,23 @@ function createApp(db: DatabaseSync): Application {
     }
   });
 
-  app.post("/", (_req, res) => {
+  app.post("/", (req, res) => {
+    const userData = req.body;
+
+    const valid = UserSchema.safeParse(userData);
+
+    if (!valid.success) {
+      console.log(valid.error.issues);
+
+      const errors = valid.error.issues.map(
+        (error: z.core.$ZodIssue) => error.message,
+      );
+
+      return res.status(422).json(errors);
+    }
+
     try {
       const query = db.prepare(schema.queries.insertMessage);
-      
-      const valid = UserSchema.safeParse(userData);
-
-      if (!valid.success) {
-        console.log(valid.error.issues)
-        return res.status(422).json({ message: `Your input doesn't follow some rules: ${valid.error.issues}` })
-      }
 
       const result = query.run(valid.data);
 
