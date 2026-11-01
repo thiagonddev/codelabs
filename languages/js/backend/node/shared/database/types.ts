@@ -9,7 +9,7 @@ export type Schema = {
   };
 };
 
-export const UserSchema = z.object({
+export const UserSchema = z.strictObject({
   username: z
     .string("Invalid username format")
     .trim()
