@@ -4,8 +4,8 @@
   "description": "",
   "author": "Thiago Nogueira",
   "type": "commonjs",
-  "main": "index.ts",
+  "main": "index.cts",
   "scripts": {
-    "dev": "node --import=tsx --watch --env-file=../../../../../../../../shared/server/.env.example --env-file=../../../../../../../../shared/auth/.env.example index.ts"
+    "dev": "node --import=tsx --watch --env-file=../../../../../../../../shared/server/.env.example --env-file=../../../../../../../../shared/auth/.env.example index.cts"
   }
 }

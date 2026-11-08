@@ -5,7 +5,7 @@ import type JWT from "jsonwebtoken";
 
 import type {
   User,
-  UserPayload,
+  UserPayload
 } from "../../../../../../../../shared/auth/types";
 
 const { DatabaseSync } = require("node:sqlite");

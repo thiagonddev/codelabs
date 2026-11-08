@@ -5,8 +5,8 @@
   "license": "ISC",
   "author": "Thiago Nogueira",
   "type": "commonjs",
-  "main": "server.ts",
+  "main": "server.cts",
   "scripts": {
-    "dev": "node --import=tsx --watch --env-file=../../../../../shared/server/.env.example server.ts"
+    "dev": "node --import=tsx --watch --env-file=../../../../../shared/server/.env.example server.cts"
   }
 }
