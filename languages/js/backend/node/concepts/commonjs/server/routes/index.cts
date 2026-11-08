@@ -1,4 +1,4 @@
-import type { IncomingRequest, ServerResponse } from "node:http";
+import type { IncomingMessage, ServerResponse } from "node:http";
 
 const http = require("node:http");
 
@@ -8,7 +8,7 @@ if (isInvalid) {
   throw new Error("Environment variable does not contain a valid port number");
 }
 
-const server = http.createServer((req: IncomingRequest, res: ServerResponse) => {
+const server = http.createServer((req: IncomingMessage, res: ServerResponse) => {
   const host = req.headers.host ?? `localhost:${PORT}`;
   const url = new URL(req.url ?? "/", `http://${host}`);
 

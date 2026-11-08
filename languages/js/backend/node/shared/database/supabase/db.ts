@@ -1,4 +1,4 @@
-const { createClient } = require("@supabase/supabase-js")
+import { createClient } from "@supabase/supabase-js"
 
 const supabaseURL = process.env.SUPABASE_URL
 const supabasePublicKey = process.env.SUPABASE_KEY
@@ -11,6 +11,4 @@ if (!supabasePublicKey) {
   throw new Error("Missing required environment variable: SUPABASE_KEY");
 }
 
-const supabase = createClient(supabaseURL, supabasePublicKey)
-
-module.exports = supabase
+export const supabase = createClient(supabaseURL, supabasePublicKey)

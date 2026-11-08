@@ -1,4 +1,4 @@
-const app = require('./app.ts')
+const app = require('./app.cts')
 
 const { PORT, isInvalid } = require("../../../../../shared/server/config.ts");
 
@@ -9,5 +9,3 @@ if (isInvalid) {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-export {}

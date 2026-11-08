@@ -10,7 +10,7 @@ const {
   isInvalid,
 } = require("../../../../../../shared/server/config.ts");
 
-const createApp = require("./app.ts");
+const createApp = require("./app.cts");
 
 if (isInvalid) {
   throw new Error("Environment variable does not contain a valid port number");
