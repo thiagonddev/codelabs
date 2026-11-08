@@ -6,7 +6,7 @@ updates:
     directories:
       - "/languages/js"
       - "/languages/js/backend/node"
-      - "/languages/js/backend/node/frameworks/express
+      - "/languages/js/backend/node/frameworks/express"
       - "/languages/js/backend/node/frameworks/express/commonjs/auth/jwt"
       - "/languages/js/backend/node/frameworks/express/commonjs/auth/jwt/bcrypt"
       - "/languages/js/backend/node/shared/database/supabase"
