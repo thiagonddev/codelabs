@@ -7,6 +7,6 @@
   "type": "commonjs",
   "main": "server.ts",
   "scripts": {
-    "dev": "node --watch --env-file=../../../../../shared/server/.env.example server.ts"
+    "dev": "node --import=tsx --watch --env-file=../../../../../shared/server/.env.example server.ts"
   }
 }
