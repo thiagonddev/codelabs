@@ -1,16 +1,11 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 
-import type { User } from "../../../../shared/database/types";
+import type { BaseUser } from "../../../../shared/database/types";
 
 const http = require("node:http");
 
 const { supabase } = require("../../../../shared/database/supabase/db.ts");
-
-const { PORT, isInvalid } = require('../../../../shared/server/config.ts')
-
-if (isInvalid) {
-  throw new Error("Environment variable does not contain a valid port number");
-}
+const { VALID_PORT } = require("../../../../shared/server/port.ts");
 
 const server = http.createServer(
   async (req: IncomingMessage, res: ServerResponse) => {
@@ -50,7 +45,7 @@ const server = http.createServer(
       }
 
       if (req.method === "POST" && req.url === "/") {
-        const newUser: User = {
+        const newUser: BaseUser = {
           username: "thiagond",
           email: "thiagond@example.com",
           message: "User created with POST",
@@ -192,6 +187,6 @@ const server = http.createServer(
   },
 );
 
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+server.listen(VALID_PORT, () => {
+  console.log(`Server is running on port ${VALID_PORT}`);
 });

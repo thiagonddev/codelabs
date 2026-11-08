@@ -24,7 +24,7 @@ const deleteMessageQuery = `
     RETURNING id, username, email, message
 `;
 
-const schema = {
+export const schema = {
   createTable: createTableQuery,
   queries: {
     selectAllMessages: selectAllMessagesQuery,
@@ -32,5 +32,3 @@ const schema = {
     deleteMessage: deleteMessageQuery,
   },
 } satisfies Schema;
-
-module.exports = schema;

@@ -1,20 +1,11 @@
-import type { Schema } from "../../../../../../shared/database/types";
-
 const { DatabaseSync } = require("node:sqlite");
 
-const schema =
-  require("../../../../../../shared/database/sqlite/schema.ts") as Schema;
+const { startServer } = require("../../../../../../shared/server/express/boot.ts");
 
-const {
-  PORT,
-  isInvalid,
-} = require("../../../../../../shared/server/config.ts");
+const { schema } =
+  require("../../../../../../shared/database/sqlite/schema.ts");
 
 const createApp = require("./app.cts");
-
-if (isInvalid) {
-  throw new Error("Environment variable does not contain a valid port number");
-}
 
 const db = new DatabaseSync("sqlite.db");
 
@@ -25,8 +16,6 @@ try {
   process.exit(1);
 }
 
-const app = createApp(db);
+const app = createApp(db, schema);
 
-app.listen(PORT, () => {
-  console.log(`The server is running on port ${PORT}`);
-});
+startServer(app)

@@ -2,14 +2,10 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 
 const http = require("node:http");
 
-const { PORT, isInvalid } = require('../../../../shared/server/config.ts')
-
-if (isInvalid) {
-  throw new Error("Environment variable does not contain a valid port number");
-}
+const { VALID_PORT } = require("../../../../shared/server/port.ts");
 
 const server = http.createServer((req: IncomingMessage, res: ServerResponse) => {
-  const host = req.headers.host ?? `localhost:${PORT}`;
+  const host = req.headers.host ?? `localhost:${VALID_PORT}`;
   const url = new URL(req.url ?? "/", `http://${host}`);
 
   if (req.method === "GET" && url.pathname === "/") {
@@ -42,6 +38,6 @@ const server = http.createServer((req: IncomingMessage, res: ServerResponse) => 
   res.end("Page not found");
 });
 
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+server.listen(VALID_PORT, () => {
+  console.log(`Server is running on port ${VALID_PORT}`);
 });

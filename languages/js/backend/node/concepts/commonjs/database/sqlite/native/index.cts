@@ -1,17 +1,11 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
 
-import type { Message } from "../../../../../shared/database/types";
-
 const { DatabaseSync } = require("node:sqlite");
 const http = require("node:http");
 
 const { schema } = require("../../../../../shared/database/sqlite/schema.ts");
-const { PORT, isInvalid } = require("../../../../../shared/server/config.ts");
-
-if (isInvalid) {
-  throw new Error("Environment variable does not contain a valid port number");
-}
+const { VALID_PORT } = require("../../../../../shared/server/port.ts");
 
 const db: DBConfigType = new DatabaseSync("sqlite.db");
 
@@ -36,25 +30,18 @@ const server = http.createServer(
     if (req.method === "GET" && parsedURL.pathname === "/") {
       try {
         const query = db.prepare(schema.queries.selectAllMessages);
-        const messages = query.all() as Message[];
+        const messages = query.all();
 
         if (messages.length === 0) {
           res.writeHead(200, { "Content-Type": "text/plain" });
           return res.end("No messages were found");
         }
 
-        const usersList = messages.map((message) => ({
-          id: message.id,
-          name: message.username,
-          email: message.email,
-          message: message.message,
-        }));
-
         console.log(`There are ${messages.length} message(s) in this database`);
-        console.log(usersList);
+        console.log(messages);
 
         res.writeHead(200, { "Content-Type": "application/json" });
-        return res.end(JSON.stringify(usersList));
+        return res.end(JSON.stringify(messages));
       } catch (error) {
         console.error("Error executing SQLite SELECT query:", error);
 
@@ -133,6 +120,6 @@ const server = http.createServer(
   },
 );
 
-server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+server.listen(VALID_PORT, () => {
+  console.log(`Server listening on port ${VALID_PORT}`);
 });
