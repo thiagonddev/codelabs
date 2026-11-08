@@ -32,7 +32,7 @@ const userPayloadQuery = `
     WHERE id = :id
 `;
 
-const schema = {
+export const schema = {
   createTable: createTableQuery,
   queries: {
     userRegisterMatch: userRegisterMatchQuery,
@@ -41,5 +41,3 @@ const schema = {
     userPayload: userPayloadQuery,
   },
 } satisfies Schema;
-
-module.exports = { schema };

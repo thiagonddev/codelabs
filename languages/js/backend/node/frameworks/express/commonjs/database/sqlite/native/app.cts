@@ -8,12 +8,9 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const schema =
-  require("../../../../../../shared/database/sqlite/schema.ts") as Schema;
+const { BaseUserSchema } = require("../../../../../../shared/database/types.ts");
 
-const { UserSchema } = require("../../../../../../shared/database/types.ts");
-
-function createApp(db: DatabaseSync): Application {
+function createApp(db: DatabaseSync, schema: Schema): Application {
   const app: Application = express();
 
   app.use(express.json());
@@ -42,7 +39,7 @@ function createApp(db: DatabaseSync): Application {
   app.post("/", (req, res) => {
     const userData = req.body;
 
-    const valid = UserSchema.safeParse(userData);
+    const valid = BaseUserSchema.safeParse(userData);
 
     if (!valid.success) {
       console.log(valid.error.issues);

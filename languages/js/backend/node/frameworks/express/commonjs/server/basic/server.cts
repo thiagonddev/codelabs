@@ -1,11 +1,5 @@
-const app = require('./app.cts')
+const app = require("./app.cts");
 
-const { PORT, isInvalid } = require("../../../../../shared/server/config.ts");
+const { startServer } = require("../../../../../shared/server/express/boot.ts");
 
-if (isInvalid) {
-  throw new Error("Environment variable does not contain a valid port number");
-}
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+startServer(app);

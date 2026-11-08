@@ -9,7 +9,7 @@ export type Schema = {
   };
 };
 
-export const UserSchema = z.strictObject({
+export const BaseUserSchema = z.strictObject({
   username: z
     .string("Invalid username format")
     .trim()
@@ -23,4 +23,4 @@ export const UserSchema = z.strictObject({
     .max(2000, "Message must not exceed 2,000 characters long"),
 });
 
-export type User = z.infer<typeof UserSchema>;
+export type BaseUser = z.infer<typeof BaseUserSchema>;
