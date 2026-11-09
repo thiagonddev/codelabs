@@ -1,9 +1,19 @@
-const createApp = require('./index.cts')
+const {
+  initDatabase,
+} = require("../../../../../../../../shared/database/boot.ts");
+
+const {
+  authSchema,
+} = require("../../../../../../../../shared/auth/jwt/database/sqlite/native/schema.ts");
+
+const createApp = require("./app.cts");
 
 const {
   startServer,
 } = require("../../../../../../../../shared/server/express/boot.ts");
 
-const app = createApp()
+const { db, schema } = initDatabase(authSchema);
 
-startServer(app)
+const app = createApp(db, schema);
+
+startServer(app);

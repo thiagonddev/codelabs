@@ -1,4 +1,4 @@
-import type { Express, Request, Response, NextFunction } from "express";
+import type { Application } from "express";
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
 import type Bcrypt from "bcrypt";
 import type JWT from "jsonwebtoken";
@@ -8,7 +8,6 @@ import type {
   UserPayload
 } from "../../../../../../../../shared/auth/types";
 
-const { DatabaseSync } = require("node:sqlite");
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -16,68 +15,22 @@ const helmet = require("helmet");
 const bcrypt = require("bcrypt") as typeof Bcrypt;
 const jwt = require("jsonwebtoken") as typeof JWT;
 
-const { schema } = require("../../../../../../../../shared/auth/database/sqlite/native/schema.ts");
+const {
+  authenticateToken,
+} = require("../../../../../../../../shared/auth/jwt/middleware.ts");
 
-function createApp() {
+const {
+  getJWTSecret,
+} = require("../../../../../../../../shared/auth/jwt/validation.ts");
 
-  const app: Express = express();
+function createApp(db: DBConfigType, schema: any) {
+  const app: Application = express();
 
   app.use(express.json());
   app.use(cors());
   app.use(helmet());
 
-  const db: DBConfigType = new DatabaseSync("sqlite.db");
-
-  const JWT_SECRET = process.env.JWT_SECRET ?? "";
-
-  if (!JWT_SECRET) {
-    throw new Error("Environment variable does not contain a valid JWT secret");
-  }
-
-  try {
-    db.exec(schema.createTable);
-  } catch (error) {
-    console.error("Error executing SQLite CREATE TABLE command:", error);
-    process.exit(1);
-  }
-
-  function authenticateToken(req: Request, res: Response, next: NextFunction) {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader) {
-      return res.status(401).json({
-        error: "Missing Authorization header",
-      });
-    }
-
-    const match = authHeader.match(/^Bearer\s+(\S+)$/);
-
-    if (!match) {
-      return res.status(401).json({
-        error: "Invalid Authorization header",
-      });
-    }
-
-    const token = match[1];
-
-    try {
-      const payload = jwt.verify(token, JWT_SECRET);
-
-      if (typeof payload === "string" || typeof payload.userId !== "number") {
-        return res.status(401).json({
-          error: "Invalid token payload",
-        });
-      }
-
-      req.userId = payload.userId;
-
-      next();
-    } catch {
-      return res.status(401).json({
-        error: "Invalid or expired token",
-      });
-    }
-  }
+  const JWT_SECRET = getJWTSecret();
 
   app.post("/register", async (req, res) => {
     try {
@@ -159,7 +112,9 @@ function createApp() {
 
       username = username.trim();
 
-      const result = db.prepare(schema.queries.userLoginMatch).get({ username });
+      const result = db
+        .prepare(schema.queries.userLoginMatch)
+        .get({ username });
 
       if (!result) {
         return res.status(401).json({
@@ -195,7 +150,9 @@ function createApp() {
       });
     }
 
-    const result = db.prepare(schema.queries.userPayload).get({ id: req.userId });
+    const result = db
+      .prepare(schema.queries.userPayload)
+      .get({ id: req.userId });
 
     if (!result) {
       return res.status(404).json({
@@ -208,7 +165,7 @@ function createApp() {
     res.json(user);
   });
 
-  return app
+  return app;
 }
 
-module.exports = createApp
+module.exports = createApp;

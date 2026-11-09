@@ -1,4 +1,4 @@
-import type { Schema } from "../../../types";
+import type { AuthSchema } from "../../../../types";
 
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS users (
@@ -32,7 +32,7 @@ const userPayloadQuery = `
     WHERE id = :id
 `;
 
-export const schema = {
+export const authSchema: AuthSchema = {
   createTable: createTableQuery,
   queries: {
     userRegisterMatch: userRegisterMatchQuery,
@@ -40,4 +40,4 @@ export const schema = {
     userLoginMatch: userLoginMatchQuery,
     userPayload: userPayloadQuery,
   },
-} satisfies Schema;
+};

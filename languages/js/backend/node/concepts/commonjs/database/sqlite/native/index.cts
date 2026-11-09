@@ -4,13 +4,13 @@ import type { DatabaseSync as DBConfigType } from "node:sqlite";
 const { DatabaseSync } = require("node:sqlite");
 const http = require("node:http");
 
-const { schema } = require("../../../../../shared/database/sqlite/schema.ts");
+const { messageSchema } = require("../../../../../shared/database/sqlite/schema.ts");
 const { VALID_PORT } = require("../../../../../shared/server/port.ts");
 
 const db: DBConfigType = new DatabaseSync("sqlite.db");
 
 try {
-  db.exec(schema.createTable);
+  db.exec(messageSchema.createTable);
 } catch (error) {
   console.error("Error executing SQLite CREATE TABLE command:", error);
   process.exit(1);
@@ -29,7 +29,7 @@ const server = http.createServer(
     // GET /
     if (req.method === "GET" && parsedURL.pathname === "/") {
       try {
-        const query = db.prepare(schema.queries.selectAllMessages);
+        const query = db.prepare(messageSchema.queries.selectAllMessages);
         const messages = query.all();
 
         if (messages.length === 0) {
@@ -53,7 +53,7 @@ const server = http.createServer(
     // POST /
     else if (req.method === "POST" && parsedURL.pathname === "/") {
       try {
-        const query = db.prepare(schema.queries.insertMessage);
+        const query = db.prepare(messageSchema.queries.insertMessage);
 
         const result = query.run({
           username: "Thiago Nogueira",
@@ -89,7 +89,7 @@ const server = http.createServer(
       }
 
       try {
-        const query = db.prepare(schema.queries.deleteMessage);
+        const query = db.prepare(messageSchema.queries.deleteMessage);
 
         const result = query.get({ id: userId });
 
