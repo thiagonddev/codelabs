@@ -1,4 +1,4 @@
-import type { Schema } from "../types";
+import type { MessageSchema } from "../types";
 
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS messages (
@@ -24,11 +24,11 @@ const deleteMessageQuery = `
     RETURNING id, username, email, message
 `;
 
-export const schema = {
+export const messageSchema: MessageSchema = {
   createTable: createTableQuery,
   queries: {
     selectAllMessages: selectAllMessagesQuery,
     insertMessage: insertMessageQuery,
     deleteMessage: deleteMessageQuery,
   },
-} satisfies Schema;
+};

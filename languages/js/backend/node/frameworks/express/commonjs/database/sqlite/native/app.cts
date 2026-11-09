@@ -1,8 +1,8 @@
-import type { DatabaseSync } from "node:sqlite";
 import type { Application } from "express";
-import type { z } from "zod";
+import type { DatabaseSync } from "node:sqlite";
+import type z from "zod";
 
-import type { Schema } from "../../../../../../shared/database/types";
+import type { MessageSchema } from "../../../../../../shared/database/types";
 
 const express = require("express");
 const cors = require("cors");
@@ -10,7 +10,7 @@ const helmet = require("helmet");
 
 const { BaseUserSchema } = require("../../../../../../shared/database/types.ts");
 
-function createApp(db: DatabaseSync, schema: Schema): Application {
+function createApp(db: DatabaseSync, schema: MessageSchema) {
   const app: Application = express();
 
   app.use(express.json());

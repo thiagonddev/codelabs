@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export type Schema = {
+export type MessageSchema = {
   createTable: string;
   queries: {
     selectAllMessages: string;

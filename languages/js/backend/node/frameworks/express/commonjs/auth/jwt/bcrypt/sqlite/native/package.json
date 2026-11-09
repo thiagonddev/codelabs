@@ -4,7 +4,7 @@
   "description": "",
   "author": "Thiago Nogueira",
   "type": "commonjs",
-  "main": "index.cts",
+  "main": "server.cts",
   "scripts": {
     "dev": "node --import=tsx --watch --env-file=../../../../../../../../shared/server/.env.example --env-file=../../../../../../../../shared/auth/.env.example server.cts"
   }

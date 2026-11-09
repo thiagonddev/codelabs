@@ -1,4 +1,4 @@
-export type Schema = {
+export type AuthSchema = {
   createTable: string;
   queries: {
     userRegisterMatch: string;
