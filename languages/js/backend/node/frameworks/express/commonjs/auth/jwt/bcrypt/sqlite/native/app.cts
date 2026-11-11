@@ -168,4 +168,4 @@ function createApp(db: DBConfigType, schema: any) {
   return app;
 }
 
-module.exports = createApp;
+export = createApp;

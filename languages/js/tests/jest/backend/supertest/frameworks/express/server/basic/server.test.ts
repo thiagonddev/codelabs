@@ -1,6 +1,6 @@
-const request = require("supertest") as typeof import('supertest');
+import request from "supertest"
 
-const app = require("../../../../../../../../backend/node/frameworks/express/commonjs/server/basic/app.ts");
+import app from '../../../../../../../../backend/node/frameworks/express/commonjs/server/basic/app.cjs';
 
 describe("Express app", () => {
   const expectedBody = "Hello, World!\n";
@@ -40,5 +40,3 @@ describe("Express app", () => {
     expect(response.headers["access-control-allow-origin"]).toBe("*");
   });
 });
-
-export {}

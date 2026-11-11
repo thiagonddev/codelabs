@@ -1,6 +1,6 @@
-const request = require("supertest");
+import request from "supertest";
 
-const app = require("../../../../../../../../backend/node/frameworks/express/commonjs/server/routes/app.ts");
+import app from "../../../../../../../../backend/node/frameworks/express/commonjs/server/routes/app.cjs";
 
 describe("Express app", () => {
   describe("GET /", () => {

@@ -104,4 +104,4 @@ function createApp(db: DatabaseSync, schema: MessageSchema) {
   return app;
 }
 
-module.exports = createApp;
+export = createApp;
