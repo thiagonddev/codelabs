@@ -1,167 +1,69 @@
-🇺🇸 **English** · [🇧🇷 Português](#-codelabs-1)
+<div>
 
-<img width="1000" height="500" alt="Espaço de Código Codelabs" src="https://github.com/user-attachments/assets/e253983a-97d3-441f-b587-bcfbf6f4fd7f" />
+[🇺🇸 English](README.md) · [🇧🇷 Português](README.pt-BR.md)
+
+</div>
+
+<div align="center">
+  <img
+    width="1000"
+    alt="codelabs — a personal engineering lab"
+    src="https://github.com/user-attachments/assets/e253983a-97d3-441f-b587-bcfbf6f4fd7f"
+  />
+</div>
 
 <br />
-<br />
 
-<div align='center'>
+<div align="center">
 
-![Commits](https://shieldcn.dev/github/commits/thiagonddev/codelabs.svg?size=default&logo=ri%3AFiGitCommit&amp;mode=dark) ![Repo Last Commit](https://shieldcn.dev/github/last-commit/thiagonddev/codelabs.svg?size=default&logo=ri%3AFiGitCommit&amp;mode=dark)
+![Commits](https://shieldcn.dev/github/commits/thiagonddev/codelabs.svg?size=default&logo=ri%3AFiGitCommit&mode=dark)
+![Last commit](https://shieldcn.dev/github/last-commit/thiagonddev/codelabs.svg?size=default&logo=ri%3AFiGitCommit&mode=dark)
 
 </div>
 
 <br />
 
-# 🇺🇸 codelabs
+# codelabs
 
 <br />
 
-> *A personal monorepo for experimentation, prototyping & continuous learning.*
+> _A personal engineering lab for experimentation, prototyping & continuous learning_.
 
 <br />
 
-`codelabs` is my personal workspace for exploring technologies, testing ideas & understanding how software works under the hood.
+`codelabs` is a collection of focused experiments for exploring software concepts through practical implementation.
 
 <br />
 
-Rather than a collection of polished portfolio projects, this repository serves as a **hands-on laboratory for learning through implementation**.
-
-Each experiment investigates a concept, explores a technology, tests an approach or compares different solutions to a problem.
+It covers programming fundamentals, backend development, runtime behavior, database integrations, testing & development tooling.
 
 <br />
 
-These experiments are **knowledge drafts**: small, focused explorations that prioritize understanding over completeness.
-
-<br />
-
-Some may evolve into more substantial applications; others may remain isolated proofs of concept.
-
-Both outcomes are valuable.
+Rather than prioritizing finished applications, this repository focuses on understanding how software works, why different implementations behave as they do and what trade-offs they introduce.
 
 <br />
 
 > [!NOTE]
-> The repository is intentionally exploratory.
-> 
-> Its purpose is not to make every example production-ready, but to document the process of learning, preserve useful knowledge & provide a foundation for future experiments.
+>
+> `codelabs` is a work in progress.
+>
+> Its code, dependencies, conventions and structure may evolve as experiments develop & new questions arise.
 
 <br />
 
-## Table of Contents
+## Explore
 
 <br />
 
-- [Summary](#summary)
-- [Topics](#topics)
-- [Structure](#structure)
-- [Current Focus](#current-focus)
-- [Philosophy](#philosophy)
-- [Final Notes](#final-notes)
-
-<br />
-
-## Summary
-
-<br />
-
-The repository is organized by programming language, development domain & area of experimentation rather than around a single application or architectural pattern.
-
-<br />
-
-Its current structure includes:
-
-<br />
-
-- **Bash:** introductory examples covering variables & conditional execution.
-
-<br />
-
-- **JavaScript / Node.js:** backend experiments involving runtime fundamentals, CommonJS, HTTP servers and database integrations.
-
-<br />
-
-- **Express:** framework-based implementations covering routing, CORS, database access & authentication.
-
-<br />
-
-- **Shared resources:** reusable types, database schemas, server configuration and HTTP request collections.
-
-<br />
-
-- **Testing:** Jest configuration & Supertest-based backend tests.
-
-<br />
-
-- **Tooling:** TypeScript configuration and a shell script for generating a file tree.
-
-<br />
-
-The organization allows experiments to remain independent while supporting shared code where reuse provides a practical benefit.
-
-<br />
-
-## Topics
-
-<br />
-
-The repository explores different aspects of software development, including:
-
-<br />
-
-- Programming languages, runtimes & built-in APIs.
-
-<br />
-
-- Backend development and server-side architectures.
-
-<br />
-
-- HTTP servers, routing, middleware & API design.
-
-<br />
-
-- Frameworks, libraries and native integrations.
-
-<br />
-
-- Database schemas, persistence & data access.
-
-<br />
-
-- SQLite and Supabase integrations.
-
-<br />
-
-- Authentication, JWTs & password hashing.
-
-<br />
-
-- JavaScript module systems and TypeScript configuration.
-
-<br />
-
-- Shared modules, dependency organization & project structure.
-
-<br />
-
-- Automated testing and development tooling.
-
-<br />
-
-- Alternative implementations of similar problems.
-
-<br />
-
-- Shell scripting & command-line fundamentals.
-
-<br />
-
-These topics represent areas of investigation rather than a fixed roadmap.
-
-<br />
-
-New experiments may introduce other languages, frameworks & tools as new questions arise.
+| Area | What you'll find | Documentation |
+| --- | --- | --- |
+| **Bash** | Introductory exercises on variables, input & conditional execution. | [Bash guide](languages/bash/README.md) |
+| **JavaScript & TypeScript** | Workspace configuration, runtime tooling and testing workflows. | [JavaScript workspace](languages/js/README.md) |
+| **Node.js concepts** | Built-in APIs, CommonJS, HTTP servers, SQLite & Supabase experiments. | [Node.js guide](languages/js/backend/node/README.md) |
+| **Express** | Server setup, CORS, routing, SQLite integration and authentication experiments. | [Express guide](languages/js/backend/node/frameworks/express/README.md) |
+| **Shared backend resources** | Reusable authentication, database & server modules. | [Shared resources guide](languages/js/backend/node/shared/README.md) |
+| **Testing** | Jest configuration and Supertest-based HTTP tests. | [Testing guide](languages/js/tests/README.md) |
+| **Scripts** | Dependency setup & directory-tree utilities. | [Scripts guide](scripts/README.md) |
 
 <br />
 
@@ -169,400 +71,117 @@ New experiments may introduce other languages, frameworks & tools as new questio
 
 <br />
 
-The repository's top-level organization separates experiments by language & development domain.
+The repository is organized by language & development area.
 
 <br />
 
-```
+Experiments remain independently structured, while shared code is introduced where it provides a practical benefit.
+
+<br />
+
+```text
 codelabs/
 ├── languages/
 │   ├── bash/
+│   │   ├── README.md
 │   │   └── intro/
-│   │       ├── conditions.sh
-│   │       └── variables.sh
 │   └── js/
+│       ├── README.md
 │       ├── backend/
 │       │   └── node/
 │       │       ├── README.md
 │       │       ├── concepts/
 │       │       ├── frameworks/
+│       │       │   └── express/
 │       │       └── shared/
-│       ├── tests/
-│       │   └── jest/
-│       │       └── backend/
-│       │           └── supertest/
-│       ├── jest.config.ts
-│       └── tsconfig.json
+│       └── tests/
+│           └── README.md
 ├── scripts/
-│   └── filetree.sh
-└── README.md
+│   └── README.md
+├── README.md
+└── README.pt-BR.md
 ```
 
 <br />
 
-The tree above highlights the main entry points.
+This is a high-level map, not a complete file listing.
 
 <br />
 
-Individual experiment directories contain their own implementations, configuration & supporting resources.
+Individual experiment directories contain their own source files, manifests, lockfiles & supporting resources.
 
 <br />
 
-### Bash
+## Getting Started
 
-<br />
-
-**Location:** [`languages/bash/`](https://github.com/thiagonddev/codelabs/tree/master/languages/bash/)
-
-<br />
-
-Introductory shell scripting experiments covering:
-
-<br />
-
-- `variables.sh` — variable fundamentals.
-
-<br />
-
-- `conditions.sh` — conditional execution.
-
-<br />
-
-These examples provide a foundation for exploring shell syntax, scripting practices and command-line automation.
-
-<br />
-
-### JavaScript & Node.js
-
-<br />
-
-**Location:** [`languages/js/backend/node/`](https://github.com/thiagonddev/codelabs/tree/master/languages/js/backend/node)
-
-<br />
-
-The Node.js workspace focuses on backend development with JavaScript & TypeScript.
-
-Its structure separates lower-level runtime experiments from framework-specific implementations and shared resources.
-
-<br />
-
-#### `concepts/`
-
-<br />
-
-Explorations of Node.js fundamentals & built-in capabilities, organized under `concepts/commonjs/`.
-
-<br />
-
-Current areas include:
-
-<br />
-
-- **Database access:** native SQLite & Supabase integrations.
-
-<br />
-
-- **Operating system APIs:** experiments using the Node.js `os` module.
-
-<br />
-
-- **HTTP servers:** basic server implementations & route handling.
-
-<br />
-
-- **CommonJS:** module organization and runtime-level concepts.
-
-<br />
-
-These experiments help isolate underlying mechanisms from framework abstractions, making their behavior & trade-offs easier to understand.
-
-<br />
-
-#### `frameworks/`
-
-<br />
-
-Framework-oriented implementations currently focus on Express with CommonJS.
-
-<br />
-
-The directory contains experiments covering:
-
-<br />
-
-- **Server fundamentals:** basic applications & server entry points.
-
-<br />
-
-- **HTTP behavior:** routing and CORS configuration.
-
-<br />
-
-- **Database integration:** native SQLite implementations.
-
-<br />
-
-- **Authentication:** JWT-based flows, bcrypt password hashing & SQLite-backed authentication.
-
-<br />
-
-Separating framework implementations from runtime concepts makes it easier to compare higher-level abstractions with lower-level approaches.
-
-<br />
-
-#### `shared/`
-
-<br />
-
-**Location:** [`languages/js/backend/node/shared/`](https://github.com/thiagonddev/codelabs/tree/master/languages/js/backend/node/shared)
-
-<br />
-
-Reusable resources for related experiments, including:
-
-<br />
-
-- Authentication types & database schemas.
-
-<br />
-
-- SQLite schemas and Supabase database integration.
-
-<br />
-
-- Shared database types.
-
-<br />
-
-- Server configuration.
-
-<br />
-
-- HTTP request collections for manual API exploration.
-
-<br />
-
-Shared resources are introduced when they help maintain consistency or reduce meaningful duplication.
-
-<br />
-
-They are not mandatory dependencies for every experiment.
-
-<br />
-
-### Testing
-
-<br />
-
-**Location:** [`languages/js/tests/`](https://github.com/thiagonddev/codelabs/tree/master/languages/js/tests)
-
-<br />
-
-The testing workspace contains Jest backend tests built with Supertest.
-
-<br />
-
-Current tests cover Express implementations involving:
-
-<br />
-
-- Basic server behavior.
-- HTTP route handling.
-- Native SQLite database integration.
-
-<br />
-
-The testing structure provides a dedicated space for exploring endpoint verification, integration testing & automated validation of server behavior.
-
-<br />
-
-The Jest configuration is located at `languages/js/jest.config.ts`, alongside the TypeScript configuration at `languages/js/tsconfig.json`.
-
-<br />
-
-### Scripts & Tooling
-
-<br />
-
-**Location:** [`scripts/`](https://github.com/thiagonddev/codelabs/tree/master/scripts)
-
-<br />
-
-The `filetree.sh` script supports repository inspection by generating a directory-tree representation.
-
-This small utility complements the repository's exploratory workflow by making its organization easier to inspect & document.
-
-<br />
-
-### Experiment Organization
-
-<br />
-
-Individual experiments may contain source files, database schemas, HTTP request examples, tests & other supporting resources, depending on their scope.
-
-<br />
-
-Their internal structures remain deliberately flexible.
-
-<br />
-
-**Ex.:**
-
-<br />
-
-> A small runtime demonstration may require only one source file, while an API experiment may involve application & server entry points, routing, database access, environment configuration and automated tests.
-
-<br />
-
-Dependencies & configuration can be scoped to individual experiments when necessary.
-
-<br />
-
-This preserves their independence and makes alternative implementations easier to compare without introducing unnecessary coupling.
-
-<br />
-
-## Current Focus
-
-<br />
-
-The primary focus is **backend development with Node.js and TypeScript**, with an emphasis on understanding both the fundamentals of server-side development & the abstractions provided by frameworks.
-
-<br />
-
-Current areas of exploration include:
+### Requirements
 
 <br />
 
-- Node.js runtime behavior, built-in APIs & CommonJS.
+- **Node.js:** `24.22.1` or later, as declared by the JavaScript & Node.js package manifests.
 
 <br />
 
-- HTTP servers, request handling and routing.
+- **npm:** used to install dependencies for the JavaScript and Node.js experiments.
 
 <br />
 
-- Express applications, middleware & CORS.
+- **Bash:** required by the repository utility scripts & Bash examples.
 
 <br />
 
-- Native SQLite and Supabase integrations.
+- **tree:** required only by the directory-tree script.
 
 <br />
 
-- Database schemas, persistence & data access.
+### Install JavaScript dependencies
 
 <br />
 
-- JWT-based authentication and bcrypt password hashing.
+There is no single root-level npm project.
 
-<br />
-
-- TypeScript types, declarations & compiler configuration.
-
-<br />
-
-- Shared modules and dependency organization.
-
-<br />
-
-- Automated testing with Jest & Supertest.
-
-<br />
-
-- Bash variables and conditional execution.
-
-<br />
-
-These areas reflect the current contents of the repository, not a permanent scope.
-
-<br />
-
-The focus may evolve as existing experiments develop & new learning objectives emerge.
-
-<br />
-
-## Philosophy
-
-<br />
-
-The guiding principle behind `codelabs` is simple: **learn by building.**
-
-<br />
-
-I use this repository to:
-
-<br />
-
-- Explore unfamiliar concepts through practical implementations.
-
-<br />
-
-- Break complex systems into smaller, understandable experiments.
-
-<br />
-
-- Compare alternative solutions & architectural approaches.
-
-<br />
-
-- Investigate runtime behavior, APIs, dependencies and tooling.
-
-<br />
-
-- Understand the trade-offs between simplicity, abstraction, maintainability & flexibility.
+Package manifests are scoped to the JavaScript workspace & individual experiments.
 
 <br />
 
-- Test ideas in isolation before introducing them into larger projects.
+From the repository root, preview the setup script's actions:
 
-<br />
-
-- Preserve useful findings for future reference.
-
-<br />
-
-Each experiment should have a learning objective, even when that objective is simply answering a question or observing how a mechanism behaves.
-
-<br />
+```bash
+./scripts/js/setup.sh --dry-run
+```
 
-The code does not always need to be elegant, complete or production-ready.
-
 <br />
 
-Some experiments prioritize simplicity; others deliberately investigate a particular design decision or expose limitations in an initial approach.
-
-<br />
+Then install dependencies:
 
-> **The primary goal is understanding.**
+```bash
+./scripts/js/setup.sh
+```
 
 <br />
 
-## Final Notes
+The script discovers `package.json` files under `languages/js`, installs dependencies for packages that declare them, skips packages without dependencies and continues after individual installation failures.
 
 <br />
 
-`codelabs` is a work in progress.
+Review its final summary for failures.
 
 <br />
 
-Its code, dependencies, conventions, documentation & directory structure may change as experiments evolve and my understanding improves.
+See the [JavaScript workspace guide](languages/js/README.md) for dependency boundaries, type checking & testing.
 
-Some explorations may remain incomplete or never progress beyond a proof of concept; others may be refactored, replaced, combined or expanded into more substantial implementations.
-
 <br />
 
-That is intentional.
+### Run a Bash exercise
 
 <br />
-
-Not every experiment needs to become a finished application & not every implementation needs to be reusable.
 
-The scope of each experiment is determined by the question it aims to answer.
-
-<br />
+From the repository root:
 
-Understanding why an approach works, why it fails, what trade-offs it introduces or how it compares with an alternative is a worthwhile outcome in itself.
+```bash
+bash languages/bash/intro/variables.sh
+bash languages/bash/intro/conditions.sh
+```
 
 <br />
 
@@ -571,562 +190,85 @@ Understanding why an approach works, why it fails, what trade-offs it introduces
 <br />
 
 
-🇧🇷 **Português** · [🇺🇸 English](#-codelabs)
+### Run tests
 
 <br />
 
-# 🇧🇷 codelabs
-
-<br />
-
-> *Um monorepo pessoal para experimentação, prototipagem e aprendizado contínuo.*
-
-<br />
-
-O _`codelabs`_ é meu espaço pessoal para explorar tecnologias, testar ideias e compreender como o _software_ funciona por baixo dos panos.
-
-<br />
-
-Em vez de reunir apenas projetos de portfólio finalizados, este repositório funciona como um **laboratório prático de aprendizado por meio da implementação**. 
-
-Cada experimento investiga um conceito, explora uma tecnologia, testa uma abordagem ou compara diferentes soluções para um problema.
-
-<br />
-
-Esses experimentos são **rascunhos de conhecimento** (_knowledge drafts_): explorações pequenas e focadas que priorizam a compreensão em vez da completude. 
-
-<br />
-
-Alguns podem evoluir para aplicações mais elaboradas; outros podem permanecer como provas de conceito isoladas.
-
-Ambos os resultados são válidos.
-
-<br />
-
-> [!NOTE]
-> O repositório é intencionalmente exploratório.
->
-> Seu objetivo não é tornar todos os exemplos prontos para produção, mas documentar o processo de aprendizado, preservar conhecimentos úteis e fornecer uma base para experimentações futuras.
-
-<br />
-
-## Índice
-
-<br />
-
-- [Descrição](#descrição)
-- [Tópicos](#tópicos)
-- [Estrutura](#estrutura)
-- [Foco Atual](#foco-atual)
-- [Filosofia](#filosofia)
-- [Observações Finais](#observações-finais)
-
-<br />
-
-## Descrição
-
-<br />
-
-O repositório é organizado por linguagem de programação, domínio de desenvolvimento e área de experimentação, em vez de seguir a estrutura de uma única aplicação ou padrão arquitetural.
-
-<br />
-
-Sua estrutura atual inclui:
-
-<br />
-
-- **_Bash_:** exemplos introdutórios sobre variáveis e execução condicional.
-
-<br />
-
-- **_JavaScript_ / _Node.js_:** experimentos de _backend_ envolvendo fundamentos do ambiente de execução (_runtime_), _CommonJS_, servidores HTTP e integrações com bancos de dados.
-
-<br />
-
-- **_Express_:** implementações baseadas em _framework_ envolvendo roteamento, CORS, acesso a dados e autenticação.
-
-<br />
-
-- **Recursos compartilhados:** tipos reutilizáveis, esquemas de banco de dados, configuração de servidores e coleções de requisições HTTP.
-
-<br />
-
-- **Testes:** configuração do _Jest_ e testes de _backend_ com _Supertest_.
-
-<br />
-
-- **Ferramentas:** configuração do _TypeScript_ e um _script_ de _shell_ para gerar a árvore de diretórios.
-
-<br />
-
-Essa organização permite que os experimentos permaneçam independentes, ao mesmo tempo que possibilita o compartilhamento de código quando a reutilização oferece benefícios práticos.
-
-<br />
-
-## Tópicos
-
-<br />
-
-O repositório explora diferentes aspectos do desenvolvimento de _software_, incluindo:
-
-<br />
-
-- Linguagens de programação, _runtimes_ e APIs nativas.
-
-<br />
-
-- Desenvolvimento de _backend_ e arquiteturas do lado do servidor.
-
-<br />
-
-- Servidores HTTP, roteamento, _middlewares_ e _design_ de APIs.
-
-<br />
-
-- _Frameworks_, bibliotecas e integrações nativas.
-
-<br />
-
-- Esquemas de banco de dados, persistência e acesso a dados.
-
-<br />
-
-- Integrações com _SQLite_ e _Supabase_.
-
-<br />
-
-- Autenticação, JWTs e _hashing_ de senhas.
-
-<br />
-
-- Sistemas de módulos do _JavaScript_ e configuração do _TypeScript_.
-
-<br />
-
-- Módulos compartilhados, organização de dependências e estrutura de projetos.
-
-<br />
-
-- Testes automatizados e ferramentas de desenvolvimento.
-
-<br />
-
-- Implementações alternativas para problemas semelhantes.
-
-<br />
-
-- _Shell scripting_ e fundamentos da linha de comando.
-
-<br />
-
-Esses tópicos representam áreas de investigação, não um roteiro fixo.
-
-<br />
-
-Novos experimentos poderão incorporar outras linguagens, _frameworks_ e ferramentas conforme novas perguntas surgirem.
-
-<br />
-
-## Estrutura
-
-<br />
-
-A organização principal separa os experimentos por linguagem e domínio de desenvolvimento.
-
-<br />
-
-```
-codelabs/
-├── languages/
-│   ├── bash/
-│   │   └── intro/
-│   │       ├── conditions.sh
-│   │       └── variables.sh
-│   └── js/
-│       ├── backend/
-│       │   └── node/
-│       │       ├── README.md
-│       │       ├── concepts/
-│       │       ├── frameworks/
-│       │       └── shared/
-│       ├── tests/
-│       │   └── jest/
-│       │       └── backend/
-│       │           └── supertest/
-│       ├── jest.config.ts
-│       └── tsconfig.json
-├── scripts/
-│   └── filetree.sh
-└── README.md
+After installing dependencies:
+
+```bash
+cd languages/js
+npm test
 ```
 
 <br />
 
-A árvore acima destaca os principais pontos de entrada.
+Additional commands are available for watch mode and coverage:
 
-<br />
-
-Os diretórios de cada experimento contêm suas próprias implementações, configurações e recursos de apoio.
-
-<br />
-
-### _Bash_
-
-<br />
-
-**Localização:** [`languages/bash/`](https://github.com/thiagonddev/codelabs/tree/master/languages/bash/)
-
-<br />
-
-Experimentos introdutórios de _shell scripting_ que abordam:
-
-<br />
-
-- `variables.sh` — fundamentos de variáveis.
-
-<br />
-
-- `conditions.sh` — execução condicional.
-
-<br />
-
-Esses exemplos fornecem uma base para explorar a sintaxe do _shell_, práticas de _scripting_ e automação pela linha de comando.
-
-<br />
-
-### _JavaScript_ e _Node.js_
-
-<br />
-
-**Localização:** [`languages/js/backend/node/`](https://github.com/thiagonddev/codelabs/tree/master/languages/js/backend/node)
-
-<br />
-
-O espaço dedicado ao _Node.js_ concentra-se no desenvolvimento de backend com _JavaScript_ e _TypeScript_.
-
-Sua estrutura separa experimentos de nível mais baixo, implementações específicas de _frameworks_ e recursos compartilhados.
-
-<br />
-
-#### `concepts/`
-
-<br />
-
-Explorações dos fundamentos do _Node.js_ e de seus recursos nativos, organizadas em `concepts/commonjs/`.
-
-<br />
-
-As áreas atuais incluem:
-
-<br />
-
-- **Acesso a bancos de dados:** integrações com _SQLite_ nativo e _Supabase_.
-
-<br />
-
-- **APIs do sistema operacional:** experimentos com o módulo `os` do _Node.js_.
-
-<br />
-
-- **Servidores HTTP:** implementações básicas de servidores e tratamento de rotas.
-
-<br />
-
-- **_CommonJS_:** organização de módulos e conceitos relacionados ao _runtime_.
-
-<br />
-
-Esses experimentos ajudam a isolar os mecanismos subjacentes das abstrações oferecidas por _frameworks_, facilitando a compreensão de seu comportamento e de seus custos e benefícios.
-
-<br />
-
-#### `frameworks/`
-
-<br />
-
-As implementações orientadas a _frameworks_ concentram-se atualmente no _Express_ com _CommonJS_.
-
-<br />
-
-O diretório contém experimentos relacionados a:
-
-<br />
-
-- **Fundamentos de servidores:** aplicações básicas e pontos de entrada de servidores.
-
-<br />
-
-- **Comportamento HTTP:** roteamento e configuração de CORS.
-
-<br />
-
-- **Integração com bancos de dados:** implementações com _SQLite_ nativo.
-
-<br />
-
-- **Autenticação:** fluxos baseados em JWT, _hashing_ de senhas com _bcrypt_ e autenticação com persistência em _SQLite_.
-
-<br />
-
-A separação entre implementações baseadas em _frameworks_ e experimentos de runtime facilita a comparação entre abstrações de nível mais alto e abordagens de nível mais baixo.
-
-<br />
-
-#### `shared/`
-
-<br />
-
-**Localização:** [`languages/js/backend/node/shared/`](https://github.com/thiagonddev/codelabs/tree/master/languages/js/backend/node/shared)
-
-<br />
-
-Recursos reutilizáveis para experimentos relacionados, incluindo:
-
-<br />
-
-- Tipos de autenticação e esquemas de banco de dados.
-
-<br />
-
-- Esquemas _SQLite_ e integração com o banco de dados _Supabase_.
-
-<br />
-
-- Tipos compartilhados relacionados a bancos de dados.
-
-<br />
-
-- Configuração de servidores.
-
-<br />
-
-- Coleções de requisições HTTP para exploração manual de APIs.
-
-<br />
-
-Os recursos compartilhados são introduzidos quando ajudam a manter a consistência ou reduzem duplicações relevantes.
-
-<br />
-
-Eles não são dependências obrigatórias para todos os experimentos.
-
-<br />
-
-### Testes
-
-<br />
+```bash
+npm run test:watch
+npm run test:coverage
+```
 
-**Localização:** [`languages/js/tests/`](https://github.com/thiagonddev/codelabs/tree/master/languages/js/tests)
-
-<br />
-
-O espaço de testes contém os testes de _backend_ desenvolvidos com _Jest_ + _Supertest_.
-
-<br />
-
-Os testes atuais abrangem implementações _Express_ envolvendo:
-
-<br />
-
-- Comportamento básico de servidores.
-
-<br />
-
-- Tratamento de rotas HTTP.
-
-<br />
-
-- Integração com bancos de dados _SQLite_ nativos.
-
-<br />
-
-Essa estrutura oferece um espaço dedicado à verificação de _endpoints_, aos testes de integração e à validação automatizada do comportamento dos servidores.
-
-<br />
-
-A configuração do _Jest_ está em `languages/js/jest.config.ts`, junto à configuração do _TypeScript_ em `languages/js/tsconfig.json`.
-
-<br />
-
-### _Scripts_ e Ferramentas
-
-<br />
-
-**Localização:** [`scripts/`](https://github.com/thiagonddev/codelabs/tree/master/scripts)
-
-<br />
-
-O script `filetree.sh` auxilia na inspeção do repositório ao gerar uma representação de sua árvore de diretórios.
-
-Essa ferramenta complementa o fluxo de experimentação, tornando a organização do código mais fácil de inspecionar e documentar.
-
-<br />
-
-### Organização dos Experimentos
-
-<br />
-
-Cada experimento pode conter arquivos-fonte, esquemas de banco de dados, exemplos de requisições HTTP, testes e outros recursos de apoio, de acordo com seu escopo.
-
-<br />
-
-A estrutura interna permanece deliberadamente flexível.
-
-<br />
-
-Uma demonstração simples de um recurso do _runtime_ pode exigir apenas um arquivo-fonte, enquanto um experimento com APIs pode envolver pontos de entrada para aplicação e servidor, roteamento, acesso a dados, configuração de ambiente e testes automatizados.
-
-<br />
-
-As dependências e configurações podem ser definidas em diretórios específicos quando necessário.
-
-<br />
-
-Isso preserva a independência dos experimentos e facilita a comparação entre implementações alternativas, sem introduzir acoplamento desnecessário.
-
-<br />
-
-## Foco Atual
-
-<br />
-
-O foco principal é o **desenvolvimento de backend com _Node.js_ e _TypeScript_**, com ênfase tanto nos fundamentos do desenvolvimento no lado do servidor quanto nas abstrações oferecidas por _frameworks_.
-
 <br />
 
-As áreas de exploração atuais incluem:
+The tests and their custom Jest resolver are documented in the [testing guide](languages/js/tests/README.md).
 
 <br />
 
-- Comportamento do _runtime_ do _Node.js_, APIs nativas e _CommonJS_.
+## Experiments
 
 <br />
 
-- Servidores HTTP, tratamento de requisições e roteamento.
+Each experiment starts with a question, concept or implementation detail worth investigating.
 
 <br />
 
-- Aplicações _Express_, _middlewares_ e CORS.
+Depending on its scope, it may contain source code, a package manifest, configuration, database schemas, HTTP request examples or automated tests.
 
 <br />
 
-- Integrações com _SQLite_ nativo e _Supabase_.
+Experiments are not required to share one architecture or abstraction layer.
 
 <br />
 
-- Esquemas de banco de dados, persistência e acesso a dados.
+Keeping them focused makes it easier to compare approaches & understand their behavior without introducing unnecessary coupling.
 
 <br />
 
-- Autenticação baseada em JWT e _hashing_ de senhas com _bcrypt_.
+Some experiments may remain incomplete or never progress beyond a proof of concept; others may be refactored or expanded as the underlying understanding develops.
 
 <br />
 
-- Tipos, declarações e configuração do compilador _TypeScript_.
+**_The primary goal is understanding, not production readiness_.**
 
 <br />
 
-- Módulos compartilhados e organização de dependências.
+Unless an experiment explicitly states otherwise, treat its code as a learning exercise rather than a production-ready implementation.
 
 <br />
 
-- Testes automatizados com _Jest_ e _Supertest_.
+## Principles
 
 <br />
 
-- Variáveis e execução condicional em _Bash_.
+- **Learn by building.** Investigate concepts through small, practical implementations.
 
-<br />
-
-Essas áreas refletem o conteúdo atual do repositório, não um escopo permanente.
-
-<br />
-
-O foco poderá evoluir conforme os experimentos existentes avancem e novos objetivos de aprendizado surjam.
-
-<br />
-
-## Filosofia
-
-<br />
-
-O princípio que orienta o _`codelabs`_ é simples: **aprender construindo.**
-
-<br />
-
-Utilizo este repositório para:
-
-<br />
-
-- Explorar conceitos desconhecidos por meio de implementações práticas.
-
-<br />
-
-- Dividir sistemas complexos em experimentos menores e compreensíveis.
-
-<br />
-
-- Comparar soluções alternativas e abordagens arquiteturais.
-
-<br />
-
-- Investigar o comportamento do _runtime_, APIs, dependências e ferramentas.
-
-<br />
+<br/>
 
-- Compreender os custos e benefícios relacionados à simplicidade, abstração, manutenibilidade e flexibilidade.
+- **Prefer understanding over ceremony.** Introduce abstractions when they help answer the question being explored.
 
 <br />
 
-- Testar ideias isoladamente antes de incorporá-las a projetos maiores.
+- **Compare approaches.** Examine how different implementations solve similar problems and what trade-offs they introduce.
 
 <br />
-
-- Preservar descobertas úteis para consultas futuras.
-
-<br />
-
-Cada experimento deve ter um objetivo de aprendizado, mesmo quando esse objetivo consiste apenas em responder a uma pergunta ou observar o comportamento de determinado mecanismo.
-
-<br />
-
-O código nem sempre precisa ser elegante, completo ou estar pronto para produção.
-
-<br />
-
-Alguns experimentos priorizam a simplicidade; outros investigam deliberadamente uma decisão de design ou revelam limitações de uma abordagem inicial.
-
-<br />
-
-**O objetivo principal é compreender.**
-
-<br />
-
-## Observações Finais
-
-<br />
-
-O _`codelabs`_ está em constante evolução.
-
-<br />
-
-Seu código, suas dependências, convenções, documentação e estruturas de diretórios podem mudar conforme os experimentos avançam e meu entendimento se aprofunda.
-
-Algumas explorações podem permanecer incompletas ou nunca ultrapassar a etapa de prova de conceito; outras podem ser refatoradas, substituídas, combinadas ou expandidas em implementações mais elaboradas.
-
-<br />
-
-Isso é intencional.
-
-<br />
-
-Nem todo experimento precisa se transformar em uma aplicação finalizada, assim como nem toda implementação precisa ser reutilizável.
 
-O escopo de cada experimento é determinado pela pergunta que ele pretende responder.
+- **Keep experiments focused.** Allow each exploration to evolve at a pace & structure appropriate to its scope.
 
 <br />
 
-Compreender por que uma abordagem funciona, por que falha, quais custos e benefícios apresenta ou como se compara a uma alternativa já é, por si só, um resultado válido.
+- **Preserve useful findings.** Document non-obvious setup, decisions & observations close to the relevant code.
 
 <br />
 
@@ -1134,4 +276,13 @@ Compreender por que uma abordagem funciona, por que falha, quais custos e benef�
 
 <br />
 
-> _codelabs is about exploration, not perfection_.
+<div align="center">
+
+> “_Code is the medium; understanding is the outcome_.”
+
+</div>
+
+<br />
+
+---
+

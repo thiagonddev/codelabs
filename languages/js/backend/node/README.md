@@ -2,202 +2,15 @@
 
 <br />
 
-> _A workspace for exploring Node.js and TypeScript backend development through focused experiments_.
+> A workspace for exploring Node.js & TypeScript backend development through focused experiments.
 
 <br />
 
-## Overview
+This directory contains backend experiments that investigate Node.js fundamentals, framework-based implementations and reusable resources.
 
 <br />
 
-This directory contains experiments focused on backend development with Node.js & TypeScript.
-
-<br />
-
-Rather than building a single application, the workspace provides an environment for exploring runtime behavior, comparing implementation approaches, testing integrations & understanding backend development concepts through practical examples.
-
-<br />
-
-The experiments are organized into three main areas: `concepts/`, `frameworks/` & `shared/`.
-
-<br />
-
-Each experiment can evolve independently, with its own dependencies, configuration & implementation choices.
-
-<br />
-
-## Structure
-
-<br />
-
-```
-node/
-├── concepts/
-│   └── commonjs/
-├── frameworks/
-│   └── express/
-│       └── commonjs/
-├── shared/
-│   ├── auth/
-│   ├── database/
-│   └── server/
-├── package.json
-├── package-lock.json
-└── tsconfig.json
-```
-
-<br />
-
-### `concepts/`
-
-Experiments focused on Node.js fundamentals, built-in APIs, runtime behavior & backend development concepts.
-
-<br />
-
-Current explorations include:
-
-<br />
-
-- HTTP servers & request handling
-- Routing and API design
-- Operating system APIs
-- CommonJS module behavior
-- SQLite & Supabase integrations
-
-<br />
-
-These experiments explore how backend functionality works, including implementations that use Node.js APIs directly rather than relying on a framework.
-
-<br />
-
-### `frameworks/`
-
-Experiments focused on frameworks, libraries, integrations & implementation patterns.
-
-<br />
-
-Current explorations primarily use Express and include:
-
-<br />
-
-- Server configuration & middleware
-- Routing and request handling
-- Database integrations
-- Authentication & authorization
-- JWTs and password hashing
-
-<br />
-
-Framework-based experiments provide an opportunity to explore higher-level abstractions & compare them with more direct Node.js implementations.
-
-<br />
-
-### `shared/`
-
-Supporting code & resources that can be reused across experiments when appropriate.
-
-<br />
-
-Current areas include:
-
-<br />
-
-- `auth/` — authentication types, schemas & supporting resources
-- `database/` — database integrations, configurations, schemas and types
-- `server/` — server configuration & shared API resources
-
-<br />
-
-Shared code helps reduce duplication without requiring every experiment to follow the same architecture.
-
-<br />
-
-Reuse is intentional rather than mandatory.
-
-<br />
-
-An experiment can maintain its own implementation when that better serves the concept being explored.
-
-<br />
-
-## Requirements
-
-<br />
-
-- Node.js `24.18.0` or later
-- `npm`
-- TypeScript tooling appropriate to the experiment
-
-<br />
-
-Individual experiments may have additional requirements, such as native modules, database services, environment variables or external API credentials.
-
-<br />
-
-## Dependencies
-
-<br />
-
-The root `package.json` defines dependencies & development tooling shared across the workspace.
-
-<br />
-
-### Runtime Dependencies
-
-<br />
-
-| Package | Purpose |
-| --- | --- |
-| `cors` | Middleware for configuring Cross-Origin Resource Sharing (CORS). |
-| `helmet` | Middleware for setting HTTP security-related response headers. |
-
-<br />
-
-### Development Dependencies
-
-<br />
-
-| Package | Purpose |
-| --- | --- |
-| `@types/cors` | TypeScript declarations for `cors`. |
-| `@types/node` | TypeScript declarations for Node.js APIs. |
-
-<br />
-
-Individual experiments may declare additional dependencies in their own package manifests.
-
-<br />
-
-## TypeScript
-
-<br />
-
-The root `tsconfig.json` defines the following compiler options:
-
-<br />
-
-| Option | Value | Description |
-| --- | --- | --- |
-| `target` | `es2025` | Targets the ECMAScript 2025 language level. |
-| `strict` | `true` | Enables strict type-checking options. |
-| `noEmit` | `true` | Prevents TypeScript from generating compiled output. |
-| `types` | `["node"]` | Explicitly includes Node.js type definitions in the global type scope. |
-
-<br />
-
-This configuration supports strict type checking without generating JavaScript files.
-
-<br />
-
-The `target` option specifies the language level used for TypeScript compilation & checking.
-
-<br />
-
-It does not, by itself, configure Node.js module resolution or determine whether an experiment uses CommonJS or ECMAScript modules.
-
-<br />
-
-Experiments may provide additional TypeScript configuration when their requirements differ from the workspace defaults.
+The goal is to understand runtime behavior & backend concepts through implementation, not to build one monolithic application.
 
 <br />
 
@@ -205,148 +18,191 @@ Experiments may provide additional TypeScript configuration when their requireme
 
 <br />
 
-Each experiment has its own setup & execution requirements.
+| Area | Focus |
+| --- | --- |
+| [`concepts/`](concepts/) | Node.js APIs & backend fundamentals, including CommonJS, HTTP servers, operating-system information, SQLite & Supabase. |
+| [`frameworks/express/`](frameworks/express/README.md) | Express server patterns, middleware, routing, database access and authentication experiments. |
+| [`shared/`](shared/README.md) | Reusable authentication, database and server types, schemas & helpers. |
 
 <br />
 
-A typical workflow is:
+Each experiment can evolve independently.
 
 <br />
 
-1. Navigate to the experiment you want to explore.
-2. Inspect its source files, `package.json` and configuration.
-3. Install dependencies using the appropriate package manifest & lockfile.
+It may have its own package manifest, lockfile, dependencies & execution script.
+
+<br />
+
+## Requirements
+
+<br />
+
+- Node.js `24.22.1` or later.
+- npm.
+
+<br />
+
+The minimum version matches the `engines.node` field in this package manifest and the JavaScript workspace manifest.
+
+<br />
+
+## Dependencies
+
+<br />
+
+The package manifest in this directory declares dependencies used by the Node.js backend workspace:
+
+<br />
+
+| Package | Purpose |
+| --- | --- |
+| `cors` | CORS middleware. |
+| `helmet` | HTTP security-header middleware. |
+| `@types/cors` | TypeScript declarations for CORS. |
+| `@types/node` | TypeScript declarations for Node.js APIs. |
+
+<br />
+
+Other integrations declare their own dependencies in nearby manifests.
+
+Examples include Express, bcrypt, jsonwebtoken and the Supabase client.
+
+<br />
+
+There is no single dependency manifest for every experiment in this directory.
+
+<br />
+
+Use the repository's [JavaScript setup script](../../../../scripts/README.md) to discover & install dependencies across the JavaScript packages.
+
+<br />
+
+## Concepts
+
+<br />
+
+The current concept experiments include:
+
+<br />
+
+- **HTTP servers:** basic server creation & request handling using Node.js APIs.
+
+- **Routing:** a small implementation for handling HTTP paths.
+
+- **Operating-system APIs:** examples using the built-in `node:os` module.
+
+- **SQLite:** database access using Node.js's built-in `node:sqlite` API.
+
+- **Supabase:** an example integration with the Supabase JavaScript client.
+
+<br />
+
+The examples are grouped under `concepts/commonjs/` & use package-level configuration where needed.
+
+<br />
+
+## Express
+
+<br />
+
+The Express workspace currently explores:
+
+<br />
+
+- Basic application & server setup.
+- CORS middleware and HTTP response headers.
+- Route handling.
+- Native SQLite integration.
+- JWT-based authentication with bcrypt password hashing & SQLite persistence.
+
+<br />
+
+The [Express guide](frameworks/express/README.md) maps the individual implementations & explains how to run them.
+
+<br />
+
+## Shared Resources
+
+<br />
+
+The `shared/` directory contains modules that can be reused where doing so helps keep related experiments consistent.
+
+It includes authentication types and middleware, database schemas and types, a Supabase client configuration and server helpers.
+
+Shared code is optional: an experiment can keep its own implementation when that is more useful for the concept being investigated.
+
+See the [shared resources guide](shared/README.md) before reusing these modules.
+
+<br />
+
+## TypeScript configuration
+
+<br />
+
+The shared compiler configuration is located at [`languages/js/tsconfig.json`](../../tsconfig.json).
+
+<br />
+
+Its current options include:
+
+<br />
+
+| Option | Value | Purpose |
+| --- | --- | --- |
+| `target` | `es2025` | Sets the ECMAScript language target. |
+| `module` | `NodeNext` | Uses Node.js-aware module semantics. |
+| `moduleResolution` | `NodeNext` | Resolves modules according to Node.js package & extension rules. |
+| `strict` | `true` | Enables strict type checking. |
+| `noEmit` | `true` | Prevents TypeScript from generating output. |
+| `isolatedModules` | `true` | Enforces compatibility with single-file transpilation. |
+
+<br />
+
+The configuration also enables `esModuleInterop`, forces module detection and includes Node.js & Jest type definitions.
+
+Individual experiments may add their own configuration when necessary.
+
+<br />
+
+## Execution
+
+<br />
+
+Many individual examples define a `dev` script in their local `package.json`.
+
+To run one:
+
+1. Open the directory containing the experiment.
+2. Check its `package.json` and any local documentation.
+3. Confirm that its dependencies have been installed.
 4. Configure any required environment variables or external services.
-5. Run the available scripts or use the execution method documented by the experiment.
-6. Record useful observations, limitations & implementation trade-offs.
+5. Run the script defined by that package, commonly `npm run dev`.
 
 <br />
 
-### Type Checking
+Do not assume that a command or environment file used by one experiment applies to another.
 
 <br />
 
-For projects using the root TypeScript configuration, run:
+## Security & Scope
 
 <br />
 
-```
-npx tsc --project tsconfig.json
-```
+Authentication, password hashing, JWT & database examples are learning exercises.
+
+They have not been presented as production-ready services or independently security-audited implementations.
 
 <br />
 
-Run the command from the directory containing the intended configuration or specify its path explicitly.
+Never commit real credentials.
 
 <br />
 
-Because `noEmit` is enabled, this command checks the code without generating JavaScript output.
+Treat tracked `.env.example` files as templates, replace sample values for local experiments and keep actual secrets in local, ignored environment files.
+
+In particular, the current JWT example's development configuration loads a committed example environment file; do not put a real JWT secret in that file.
 
 <br />
 
-Type checking does not execute the experiment.
-
-<br />
-
-The execution method depends on its dependencies, module system & runtime configuration.
-
-<br />
-
-### Dependencies & Configuration
-
-<br />
-
-The workspace root & individual experiments may contain their own package manifests, lockfiles and configuration files.
-
-<br />
-
-Use the package manifest & lockfile associated with the project you intend to install or run.
-
-<br />
-
-Do not assume that every nested experiment shares the same dependency tree or configuration.
-
-<br />
-
-## Organization
-
-<br />
-
-Experiments are grouped by concept, framework or implementation approach rather than forced into a single application structure.
-
-<br />
-
-Depending on their requirements, individual experiments may contain:
-
-<br />
-
-- Source files & package manifests
-- Dedicated dependencies and configuration
-- Database schemas & data access implementations
-- API request examples
-- Environment variable examples
-- Experiment-specific documentation
-
-<br />
-
-A dedicated README is useful when an experiment has non-obvious setup instructions, external dependencies, architectural decisions or findings worth preserving.
-
-<br />
-
-Smaller experiments can remain self-explanatory when additional documentation would add little value.
-
-<br />
-
-## Shared Code & Architecture
-
-<br />
-
-Shared modules are introduced when multiple experiments benefit from common types, schemas, utilities or configuration.
-
-<br />
-
-When an experiment depends on shared code, its import paths & TypeScript configuration should make that relationship explicit.
-
-<br />
-
-Not every implementation needs to use the same abstractions.
-
-<br />
-
-Similar problems may be explored through different approaches to make their trade-offs easier to understand.
-
-<br />
-
-Dependencies & shared modules should simplify experimentation rather than impose unnecessary architectural constraints.
-
-<br />
-
-## Security & Configuration
-
-<br />
-
-Some experiments involve authentication, password hashing, JWTs, databases or external services.
-
-<br />
-
-When configuration requires credentials or secrets:
-
-<br />
-
-- Keep sensitive values out of source control.
-- Use environment variables or appropriate local configuration.
-- Provide example configuration files without real credentials when useful.
-- Document required services & configuration in the relevant experiment.
-- Treat experimental authentication and security implementations as learning exercises unless they have been independently reviewed for production use.
-
-<br />
-
-## Philosophy
-
-<br />
-
-These experiments are learning exercises, not necessarily production-ready applications.
-
-<br />
-
-The objective is to understand how Node.js & its ecosystem work, compare alternative implementations and explore architectural decisions without introducing complexity that does not serve the experiment.
+For test commands and the custom Jest resolver, see [`languages/js/tests/README.md`](../../tests/README.md).
