@@ -23,4 +23,4 @@ app.get("/contact", (_req, res) => {
   return res.send("You can reach me at thiagond360@gmail.com");
 });
 
-module.exports = app
+export = app

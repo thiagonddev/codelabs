@@ -13,4 +13,4 @@ app.all("/{*splat}", (_req, res) => {
   res.send("Hello, World!\n");
 });
 
-module.exports = app
+export = app
