@@ -6,6 +6,6 @@
   "type": "commonjs",
   "main": "server.cts",
   "scripts": {
-    "dev": "node --import=tsx --watch --env-file=../../../../../../shared/server/.env.example server.cts"
+    "dev": "node --import=tsx --watch --env-file=../../../../../../shared/server/config/.env.example server.cts"
   }
 }

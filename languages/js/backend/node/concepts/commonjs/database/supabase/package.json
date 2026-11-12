@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --import=tsx --watch --env-file=../../../../shared/server/.env.example --env-file=../../../../shared/database/supabase/config/.env index.cts"
+    "dev": "node --import=tsx --watch --env-file=../../../../shared/server/config/.env.example --env-file=../../../../shared/database/supabase/config/.env index.cts"
   },
   "keywords": [],
   "author": "Thiago Nogueira",
