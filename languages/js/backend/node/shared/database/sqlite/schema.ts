@@ -1,4 +1,6 @@
-import type { MessageSchema } from "../types";
+export type BaseDBUserSchema = {
+    createTable: string
+}
 
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS messages (
@@ -9,26 +11,6 @@ const createTableQuery = `
     );
 `;
 
-const selectAllMessagesQuery = `
-    SELECT * FROM messages;
-`;
-
-const insertMessageQuery = `
-    INSERT INTO messages (username, email, message)
-    VALUES (:username, :email, :message);
-`;
-
-const deleteMessageQuery = `
-    DELETE FROM messages
-    WHERE (id = :id)
-    RETURNING id, username, email, message
-`;
-
-export const messageSchema: MessageSchema = {
+export const baseDBUserSchema: BaseDBUserSchema = {
   createTable: createTableQuery,
-  queries: {
-    selectAllMessages: selectAllMessagesQuery,
-    insertMessage: insertMessageQuery,
-    deleteMessage: deleteMessageQuery,
-  },
 };

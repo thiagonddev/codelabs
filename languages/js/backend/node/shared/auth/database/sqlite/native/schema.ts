@@ -1,4 +1,4 @@
-import type { AuthSchema } from "../../../../types";
+import type { AuthSchema } from "../../../types";
 
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS users (
@@ -38,6 +38,6 @@ export const authSchema: AuthSchema = {
     userRegisterMatch: userRegisterMatchQuery,
     insertUser: insertUserQuery,
     userLoginMatch: userLoginMatchQuery,
-    userPayload: userPayloadQuery,
+    userPayload: userPayloadQuery
   },
 };

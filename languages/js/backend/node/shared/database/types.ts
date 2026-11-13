@@ -1,26 +1,9 @@
-import { z } from "zod";
+import z from "zod";
 
-export type MessageSchema = {
+import { baseUserValidationSchema } from "./validation";
+
+export type BaseDBSchema = {
   createTable: string;
-  queries: {
-    selectAllMessages: string;
-    insertMessage: string;
-    deleteMessage: string;
-  };
 };
 
-export const BaseUserSchema = z.strictObject({
-  username: z
-    .string("Invalid username format")
-    .trim()
-    .min(3, "Username must be at least 3 characters long")
-    .max(30, "Username must not exceed 30 characters long"),
-  email: z.string().trim().pipe(z.email("E-mail must have the valid format")),
-  message: z
-    .string()
-    .trim()
-    .min(10, "Message must be at least 10 characters long")
-    .max(2000, "Message must not exceed 2,000 characters long"),
-});
-
-export type BaseUser = z.infer<typeof BaseUserSchema>;
+export type BaseUserValidation = z.infer<typeof baseUserValidationSchema>;

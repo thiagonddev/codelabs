@@ -1,11 +1,14 @@
 import type { Application } from "express";
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
+
 import type Bcrypt from "bcrypt";
 import type JWT from "jsonwebtoken";
 
+import type { BaseUserValidation } from "../../../../../../../../shared/database/types";
+
 import type {
-  User,
-  UserPayload
+  AuthRegisterUserValidation,
+  AuthUserPayload,
 } from "../../../../../../../../shared/auth/types";
 
 const express = require("express");
@@ -23,6 +26,13 @@ const {
   getJWTSecret,
 } = require("../../../../../../../../shared/auth/jwt/validation.ts");
 
+const {
+  authRegisterUserValidationSchema,
+  authLoginUserValidationSchema,
+} = require("../../../../../../../../shared/auth/validation.ts");
+
+const validateUserData = require("../../../../validation.ts");
+
 function createApp(db: DBConfigType, schema: any) {
   const app: Application = express();
 
@@ -34,50 +44,24 @@ function createApp(db: DBConfigType, schema: any) {
 
   app.post("/register", async (req, res) => {
     try {
-      let { username, email, password } = req.body;
+      const userData = req.body;
 
-      if (
-        typeof username !== "string" ||
-        typeof email !== "string" ||
-        typeof password !== "string"
-      ) {
-        return res.status(400).json({
-          error: "Username, email and password must be strings",
-        });
-      }
+      const valid = validateUserData(
+        authRegisterUserValidationSchema,
+        userData,
+      );
 
-      username = username.trim();
-      email = email.trim();
+      if (!valid.data) return res.status(422).json(valid.errors);
 
-      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-      if (!username || !email || !password) {
-        return res.status(400).json({
-          error: "All fields are required",
-        });
-      }
-
-      if (username.length < 5) {
-        return res.status(400).json({
-          error: "Username must have at least 5 characters",
-        });
-      }
-
-      if (!emailRegex.test(email)) {
-        return res.status(400).json({
-          error: "Invalid email format",
-        });
-      }
-
-      if (password.length < 10) {
-        return res.status(400).json({
-          error: "Password must have at least 10 characters",
-        });
-      }
+      const validData: AuthRegisterUserValidation = {
+        username: valid.data.username,
+        email: valid.data.email,
+        password: valid.data.password,
+      };
 
       const existingUser = db
         .prepare(schema.queries.userRegisterMatch)
-        .get({ username, email });
+        .get({ username: validData.username, email: validData.email });
 
       if (existingUser) {
         return res.status(409).json({
@@ -85,15 +69,17 @@ function createApp(db: DBConfigType, schema: any) {
         });
       }
 
-      const hashedPassword = await bcrypt.hash(password, 12);
+      const hashedPassword = await bcrypt.hash(validData.password, 12);
 
       db.prepare(schema.queries.insertUser).run({
-        username,
-        email,
+        username: validData.username,
+        email: validData.email,
         password: hashedPassword,
       });
 
-      res.status(201).json({ username, email });
+      res
+        .status(201)
+        .json({ username: validData.username, email: validData.email });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Server error" });
@@ -102,19 +88,20 @@ function createApp(db: DBConfigType, schema: any) {
 
   app.post("/login", async (req, res) => {
     try {
-      let { username, password } = req.body;
+      const userData = req.body;
 
-      if (typeof username !== "string" || typeof password !== "string") {
-        return res.status(400).json({
-          error: "Username and password must be strings",
-        });
-      }
+      const valid = validateUserData(authLoginUserValidationSchema, userData);
 
-      username = username.trim();
+      if (!valid.data) return res.status(422).json(valid.errors);
+
+      const validData = {
+        username: valid.data.username,
+        password: valid.data.password,
+      };
 
       const result = db
         .prepare(schema.queries.userLoginMatch)
-        .get({ username });
+        .get({ username: validData.username });
 
       if (!result) {
         return res.status(401).json({
@@ -122,9 +109,12 @@ function createApp(db: DBConfigType, schema: any) {
         });
       }
 
-      const user = result as User;
+      const user = result as AuthUserPayload;
 
-      const passwordMatches = await bcrypt.compare(password, user.password);
+      const passwordMatches = await bcrypt.compare(
+        validData.password,
+        user.password,
+      );
 
       if (!passwordMatches) {
         return res.status(401).json({
@@ -160,7 +150,7 @@ function createApp(db: DBConfigType, schema: any) {
       });
     }
 
-    const user = result as UserPayload;
+    const user = result as BaseUserValidation;
 
     res.json(user);
   });

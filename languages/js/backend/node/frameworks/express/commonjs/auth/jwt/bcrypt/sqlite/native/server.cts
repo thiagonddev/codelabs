@@ -4,7 +4,7 @@ const {
 
 const {
   authSchema,
-} = require("../../../../../../../../shared/auth/jwt/database/sqlite/native/schema.ts");
+} = require("../../../../../../../../shared/auth/database/sqlite/native/schema.ts");
 
 const createApp = require("./app.cts");
 

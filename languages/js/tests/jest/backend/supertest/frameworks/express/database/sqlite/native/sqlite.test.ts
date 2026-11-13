@@ -1,14 +1,16 @@
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
-import type { BaseUser } from "../../../../../../../../../backend/node/shared/database/types";
+
+import type { UserMessageValidation } from "../../../../../../../../../backend/node/shared/database/user.message.types";
 
 import { DatabaseSync } from "node:sqlite";
+
 import request from "supertest";
 
-import { messageSchema } from "../../../../../../../../../backend/node/shared/database/sqlite/schema";
+import { DBUserMessageSchema } from "../../../../../../../../../backend/node/shared/database/sqlite/user.message.schema";
 
 import createApp from "../../../../../../../../../backend/node/frameworks/express/commonjs/database/sqlite/native/app.cjs";
 
-const userMocks: BaseUser[] = [
+const userMocks: UserMessageValidation[] = [
   {
     username: "Thiago Nogueira",
     email: "thiagond360@gmail.com",
@@ -25,22 +27,23 @@ describe("Express SQLite app", () => {
   let db: DBConfigType;
   let app: ReturnType<typeof createApp>;
 
-  const insertUser = (user: BaseUser) =>
-    db.prepare(messageSchema.queries.insertMessage).run(user);
+  const insertUser = (user: UserMessageValidation) =>
+    db.prepare(DBUserMessageSchema.queries.insertUserMessage).run(user);
 
-  const insertUsers = (users: BaseUser[] = userMocks) => users.map(insertUser);
+  const insertUsers = (users: UserMessageValidation[] = userMocks) =>
+    users.map(insertUser);
 
   const getMessages = () =>
-    db.prepare(messageSchema.queries.selectAllMessages).all();
+    db.prepare(DBUserMessageSchema.queries.selectAllUserMessages).all();
 
   beforeEach(() => {
     jest.spyOn(console, "log").mockImplementation(() => {});
     jest.spyOn(console, "error").mockImplementation(() => {});
 
     db = new DatabaseSync(":memory:");
-    db.exec(messageSchema.createTable);
+    db.exec(DBUserMessageSchema.createTable);
 
-    app = createApp(db, messageSchema);
+    app = createApp(db, DBUserMessageSchema);
   });
 
   afterEach(() => {

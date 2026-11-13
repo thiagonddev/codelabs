@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 
-import type { BaseUser } from "../../../../shared/database/types";
+import type { UserMessageValidation } from "../../../../shared/database/user.message.types";
 
 const http = require("node:http");
 
@@ -45,7 +45,7 @@ const server = http.createServer(
       }
 
       if (req.method === "POST" && req.url === "/") {
-        const newUser: BaseUser = {
+        const newUser: UserMessageValidation = {
           username: "thiagond",
           email: "thiagond@example.com",
           message: "User created with POST",
