@@ -8,6 +8,6 @@
   "main": "index.cts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --import=tsx --watch --env-file=../../../../shared/server/.env.example index.cts"
+    "dev": "node --import=tsx --watch --env-file=../../../../shared/server/config/.env.example index.cts"
   }
 }
