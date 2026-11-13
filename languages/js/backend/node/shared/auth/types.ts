@@ -1,5 +1,14 @@
-export type AuthSchema = {
-  createTable: string;
+import type { BaseDBSchema } from "../database/types";
+
+import z from "zod";
+
+import {
+  authRegisterUserValidationSchema,
+  authLoginUserValidationSchema,
+  authUserPayloadValidationSchema,
+} from "./validation";
+
+export type AuthSchema = BaseDBSchema & {
   queries: {
     userRegisterMatch: string;
     insertUser: string;
@@ -15,4 +24,12 @@ export type User = {
   password: string;
 };
 
-export type UserPayload = Omit<User, "id" | "password">;
+export type AuthRegisterUserValidation = z.infer<
+  typeof authRegisterUserValidationSchema
+>;
+
+export type AuthLoginUserValidation = z.infer<
+  typeof authLoginUserValidationSchema
+>;
+
+export type AuthUserPayload = z.infer<typeof authUserPayloadValidationSchema>

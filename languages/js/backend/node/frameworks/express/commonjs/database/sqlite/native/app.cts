@@ -1,16 +1,19 @@
 import type { Application } from "express";
 import type { DatabaseSync } from "node:sqlite";
+
 import type z from "zod";
 
-import type { MessageSchema } from "../../../../../../shared/database/types";
+import type { UserMessageSchema } from "../../../../../../shared/database/sqlite/user.message.types";
 
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const { BaseUserSchema } = require("../../../../../../shared/database/types.ts");
+const {
+  userMessageValidationSchema
+} = require("../../../../../../shared/database/user.message.validation.ts");
 
-function createApp(db: DatabaseSync, schema: MessageSchema) {
+function createApp(db: DatabaseSync, schema: UserMessageSchema) {
   const app: Application = express();
 
   app.use(express.json());
@@ -19,7 +22,7 @@ function createApp(db: DatabaseSync, schema: MessageSchema) {
 
   app.get("/", (_req, res) => {
     try {
-      const query = db.prepare(schema.queries.selectAllMessages);
+      const query = db.prepare(schema.queries.selectAllUserMessages);
       const messages = query.all();
 
       if (messages.length === 0) {
@@ -39,7 +42,7 @@ function createApp(db: DatabaseSync, schema: MessageSchema) {
   app.post("/", (req, res) => {
     const userData = req.body;
 
-    const valid = BaseUserSchema.safeParse(userData);
+    const valid = userMessageValidationSchema.safeParse(userData);
 
     if (!valid.success) {
       console.log(valid.error.issues);
@@ -52,7 +55,7 @@ function createApp(db: DatabaseSync, schema: MessageSchema) {
     }
 
     try {
-      const query = db.prepare(schema.queries.insertMessage);
+      const query = db.prepare(schema.queries.insertUserMessage);
 
       const result = query.run(valid.data);
 
@@ -80,7 +83,7 @@ function createApp(db: DatabaseSync, schema: MessageSchema) {
     }
 
     try {
-      const query = db.prepare(schema.queries.deleteMessage);
+      const query = db.prepare(schema.queries.deleteUserMessage);
 
       const result = query.get({ id: userId });
 
