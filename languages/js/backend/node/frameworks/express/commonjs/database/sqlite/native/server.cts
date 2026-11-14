@@ -10,7 +10,14 @@ const {
 
 const createApp = require("./app.cts");
 
-const { db, schema } = initDatabase(DBUserMessageSchema);
+const bootDB = initDatabase(DBUserMessageSchema);
+
+if (!bootDB.success) {
+  bootDB.db?.close()
+  throw new Error("Database couldn't be initialized", { cause: bootDB.error })
+}
+
+const { db, schema } = bootDB
 
 const app = createApp(db, schema);
 
