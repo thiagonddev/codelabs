@@ -47,6 +47,7 @@ Rather than prioritizing finished applications, this repository focuses on under
 >
 > `codelabs` is a work in progress.
 >
+>
 > Its code, dependencies, conventions and structure may evolve as experiments develop & new questions arise.
 
 <br />
@@ -134,7 +135,7 @@ Individual experiment directories contain their own source files, manifests, loc
 
 <br />
 
-### Install JavaScript dependencies
+### Install JavaScript Dependencies
 
 <br />
 
@@ -172,7 +173,7 @@ See the [JavaScript workspace guide](languages/js/README.md) for dependency boun
 
 <br />
 
-### Run a Bash exercise
+### Run a Bash Exercise
 
 <br />
 
@@ -190,7 +191,7 @@ bash languages/bash/intro/conditions.sh
 <br />
 
 
-### Run tests
+### Run Tests
 
 <br />
 
@@ -285,4 +286,3 @@ Unless an experiment explicitly states otherwise, treat its code as a learning e
 <br />
 
 ---
-
