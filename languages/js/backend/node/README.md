@@ -38,7 +38,7 @@ It may have its own package manifest, lockfile, dependencies & execution script.
 
 <br />
 
-- Node.js `24.22.1` or later.
+- Node.js `26.13.1` or later.
 - npm.
 
 <br />
