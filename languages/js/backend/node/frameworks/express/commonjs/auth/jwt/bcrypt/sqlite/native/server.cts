@@ -12,7 +12,14 @@ const {
   startServer,
 } = require("../../../../../../../../shared/server/express/boot.ts");
 
-const { db, schema } = initDatabase(authSchema);
+const bootDB = initDatabase(authSchema);
+
+if (!bootDB.success) {
+  bootDB.db?.close()
+  throw new Error("Database couldn't be initialized", { cause: bootDB.error });
+}
+
+const { db, schema } = bootDB
 
 const app = createApp(db, schema);
 
