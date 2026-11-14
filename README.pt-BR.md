@@ -43,6 +43,15 @@ Em vez de priorizar aplicações finalizadas, o objetivo é compreender como o _
 
 <br />
 
+> [!NOTE]
+>
+> O _`codelabs`_ está em constante evolução.
+>
+>
+> Seu código, dependências, convenções e estrutura podem mudar conforme os experimentos avançam e novas perguntas surgem.
+
+<br />
+
 ## Explore
 
 <br />
@@ -96,7 +105,11 @@ codelabs/
 
 <br />
 
-Esta é uma visão geral, não uma listagem completa de arquivos. Cada diretório de experimento contém seus próprios arquivos-fonte, manifestos, arquivos de dependências e recursos de apoio.
+Esta é uma visão geral, não uma listagem completa de arquivos.
+
+<br />
+
+Cada diretório de experimento contém seus próprios arquivos-fonte, manifestos, arquivos de dependências e recursos de apoio.
 
 <br />
 
@@ -179,7 +192,7 @@ bash languages/bash/intro/conditions.sh
 
 <br />
 
-### Executar os testes
+### Executar os Testes
 
 <br />
 

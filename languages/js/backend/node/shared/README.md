@@ -34,7 +34,7 @@ Path: [`auth/`](auth/)
 
 <br />
 
-- `auth/.env.example` shows the expected JWT environment-variable name.
+- `auth/jwt/configs/.env.example` shows the expected JWT environment-variable name.
 
 <br />
 
@@ -68,7 +68,7 @@ Path: [`database/`](database/)
 
 <br />
 
-- `supabase/config/.env.example` documents the Supabase environment-variable names.
+- `supabase/configs/.env.example` documents the Supabase environment-variable names.
 
 <br />
 
@@ -88,11 +88,11 @@ Path: [`server/`](server/)
 
 - `express/boot.ts` starts an Express application on the validated port.
 
-- `server/.env.example` provides the default port variable.
+- `server/configs/.env.example` provides the default port variable.
 
 <br />
 
-## Environment configuration
+## Environment Configuration
 
 <br />
 
@@ -133,7 +133,7 @@ Never commit service-role keys or other privileged credentials.
 
 <br />
 
-## Reuse guidelines
+## Reuse Guidelines
 
 <br />
 
