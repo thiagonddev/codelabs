@@ -118,7 +118,7 @@ Individual experiment directories contain their own source files, manifests, loc
 
 <br />
 
-- **Node.js:** `24.22.1` or later, as declared by the JavaScript & Node.js package manifests.
+- **Node.js:** `26.13.1` or later, as declared by the JavaScript & Node.js package manifests.
 
 <br />
 

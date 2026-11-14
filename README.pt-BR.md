@@ -72,7 +72,7 @@ Esta é uma visão geral, não uma listagem completa de arquivos. Cada diretóri
 
 ### Requisitos
 
-- **Node.js:** versão `24.22.1` ou superior, conforme declarado nos manifestos dos espaços de JavaScript e Node.js.
+- **Node.js:** versão `26.13.1` ou superior, conforme declarado nos manifestos dos espaços de JavaScript e Node.js.
 - **npm:** utilizado para instalar as dependências dos experimentos em JavaScript e Node.js.
 - **Bash:** necessário para os scripts utilitários e os exemplos de Bash.
 - **tree:** necessário somente para o script que gera a árvore de diretórios.

@@ -18,7 +18,7 @@ Dependency manifests & lockfiles are scoped to the workspace or to individual ex
 
 <br />
 
-- Node.js `24.22.1` or later
+- Node.js `26.13.1` or later
 - npm
 
 <br />
