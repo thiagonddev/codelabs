@@ -1,14 +1,15 @@
 import type { DatabaseSync } from "node:sqlite";
-import type { Request, Response } from "express";
+import type { RequestHandler } from "express";
 
 import type z from "zod";
 
+import type { UserMessageController } from "../../../../../../shared/database/user.message.types";
 import type { UserMessageSchema } from "../../../../../../shared/database/sqlite/user.message.types";
 
 const { userMessageValidationSchema } = require("../../../../../../shared/database/user.message.validation.ts");
 
-function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema) {
-  const getAllUserMessages = (_req: Request, res: Response) => {
+function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema): UserMessageController {
+  const getAllUserMessages: RequestHandler = (_req, res) => {
     try {
       const query = db.prepare(schema.queries.selectAllUserMessages);
       const messages = query.all();
@@ -27,7 +28,7 @@ function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema
     }
   };
 
-  const createUserMessage = (req: Request, res: Response) => { 
+  const createUserMessage: RequestHandler = (req, res) => { 
     const valid = userMessageValidationSchema.safeParse(req.body);
 
     if (!valid.success) {
@@ -59,7 +60,7 @@ function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema
     }
   }
 
-  const removeUserMessage = (req: Request, res: Response) => {
+  const removeUserMessage: RequestHandler = (req, res) => {
     const userId = Number(req.params.id);
 
     if (!Number.isInteger(userId) || userId <= 0) {
@@ -91,4 +92,4 @@ function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema
   return { getAllUserMessages, createUserMessage, removeUserMessage }
 }
 
-module.exports = createUserMessageController
+export = createUserMessageController
