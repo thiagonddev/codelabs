@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 
-import { getJWTSecret } from "./validation";
+import { getJWTSecret } from "./secret";
 
 import jwt from 'jsonwebtoken'
 
