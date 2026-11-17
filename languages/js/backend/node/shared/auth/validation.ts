@@ -1,23 +1,27 @@
-import z from "zod";
+import type { ZodObject } from "zod";
 
-import { baseUserValidationSchema } from "../database/validation";
+import type {
+  AuthLoginUserValidation,
+  AuthRegisterUserValidation,
+} from "./types";
 
-export const authRegisterUserValidationSchema = baseUserValidationSchema.extend(
-  {
-    password: z
-      .string()
-      .min(16, "Password must be at least 16 characters long")
-      .max(100, "Password must not exceed 100 characters long"),
-  },
-);
+export function validateUserData(
+  validationSchema: ZodObject,
+  userData: AuthRegisterUserValidation | AuthLoginUserValidation,
+) {
+  const result = validationSchema.safeParse(userData);
 
-export const authLoginUserValidationSchema =
-  authRegisterUserValidationSchema.omit({ email: true });
+  if (!result.success) {
+    const errors = result.error.issues.map((issue) => issue.message)
+    
+    return {
+      data: null,
+      errors
+    };
+  }
 
-export const authUserPayloadValidationSchema = authRegisterUserValidationSchema
-  .extend({
-    id: z.int().positive(),
-  })
-  .omit({
-    email: true,
-  });
+  return {
+    data: result.data,
+    errors: null,
+  };
+}

@@ -6,7 +6,7 @@ import {
   authRegisterUserValidationSchema,
   authLoginUserValidationSchema,
   authUserPayloadValidationSchema,
-} from "./validation";
+} from "./validation.schema";
 
 export type AuthSchema = BaseDBSchema & {
   queries: {
@@ -15,13 +15,6 @@ export type AuthSchema = BaseDBSchema & {
     userLoginMatch: string;
     userPayload: string;
   };
-};
-
-export type User = {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
 };
 
 export type AuthRegisterUserValidation = z.infer<
