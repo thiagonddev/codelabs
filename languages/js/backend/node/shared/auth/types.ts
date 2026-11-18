@@ -8,10 +8,10 @@ import {
   authUserPayloadValidationSchema,
 } from "./validation.schema";
 
-export type AuthSchema = BaseDBSchema & {
+export type AuthUserSchema = BaseDBSchema & {
   queries: {
     userRegisterMatch: string;
-    insertUser: string;
+    userInsert: string;
     userLoginMatch: string;
     userPayload: string;
   };
@@ -25,4 +25,4 @@ export type AuthLoginUserValidation = z.infer<
   typeof authLoginUserValidationSchema
 >;
 
-export type AuthUserPayload = z.infer<typeof authUserPayloadValidationSchema>
+export type AuthUserPayloadValidation = z.infer<typeof authUserPayloadValidationSchema>
