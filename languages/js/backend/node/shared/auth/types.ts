@@ -1,6 +1,8 @@
-import type { BaseDBSchema } from "../database/types";
+import type z from "zod";
 
-import z from "zod";
+import type { RequestHandler } from "express";
+
+import type { BaseDBSchema } from "../database/types";
 
 import {
   authRegisterUserValidationSchema,
@@ -15,6 +17,12 @@ export type AuthUserSchema = BaseDBSchema & {
     userLoginMatch: string;
     userPayload: string;
   };
+};
+
+export type AuthUserController = {
+  registerAuthUser: RequestHandler;
+  loginAuthUser: RequestHandler;
+  getAuthUser: RequestHandler;
 };
 
 export type AuthRegisterUserValidation = z.infer<
