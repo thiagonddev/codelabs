@@ -1,13 +1,15 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import type { DatabaseSync as DBConfigType } from "node:sqlite";
 
-const { DatabaseSync } = require("node:sqlite");
 const http = require("node:http");
+
+const { DatabaseSync } = require("node:sqlite");
 
 const {
   DBUserMessageSchema
 } = require("../../../../../shared/database/sqlite/user.message.schema.ts");
 
+const { StatusCodes } = require("../../../../../shared/types.ts");
 const { VALID_PORT } = require("../../../../../shared/server/port.ts");
 
 const db: DBConfigType = new DatabaseSync("sqlite.db");
@@ -22,6 +24,7 @@ try {
 const server = http.createServer(
   (req: IncomingMessage, res: ServerResponse) => {
     let parsedURL: URL;
+
     try {
       parsedURL = new URL(req.url ?? "/", "http://localhost");
     } catch (error) {
@@ -29,9 +32,14 @@ const server = http.createServer(
       return res.end("Invalid request URL");
     }
 
+    const { OK, CREATED, BAD_REQUEST_ERROR, NOT_FOUND_ERROR, SERVER_ERROR } = StatusCodes
+
     if (req.method === "GET" && parsedURL.pathname === "/") {
       try {
-        const query = db.prepare(DBUserMessageSchema.queries.selectAllUserMessages);
+        const query = db.prepare(
+          DBUserMessageSchema.queries.selectAllUserMessages
+        );
+        
         const messages = query.all();
 
         if (messages.length === 0) {
@@ -42,24 +50,26 @@ const server = http.createServer(
         console.log(`There are ${messages.length} message(s) in this database`);
         console.log(messages);
 
-        res.writeHead(200, { "Content-Type": "application/json" });
+        res.writeHead(OK, { "Content-Type": "application/json" });
+        
         return res.end(JSON.stringify(messages));
       } catch (error) {
         console.error("Error executing SQLite SELECT query:", error);
 
-        res.writeHead(500, { "Content-Type": "text/plain" });
+        res.writeHead(SERVER_ERROR, {
+          "Content-Type": "text/plain"
+        });
+        
         return res.end("Something went wrong");
       }
-    }
-
-    else if (req.method === "POST" && parsedURL.pathname === "/") {
+    } else if (req.method === "POST" && parsedURL.pathname === "/") {
       try {
         const query = db.prepare(DBUserMessageSchema.queries.insertUserMessage);
 
         const result = query.run({
           username: "Thiago Nogueira",
           email: "thiagond360@gmail.com",
-          message: "This is a INSERT SQL statement!",
+          message: "This is a INSERT SQL statement!"
         });
 
         if (result.changes === 0) {
@@ -68,23 +78,30 @@ const server = http.createServer(
 
         console.log(`${result.changes} message was successfully added!`);
 
-        res.writeHead(201, { "Content-Type": "application/json" });
+        res.writeHead(CREATED, {
+          "Content-Type": "application/json"
+        });
+        
         return res.end(JSON.stringify({ success: true, result }));
       } catch (error) {
         console.error("Error executing SQLite INSERT query:", error);
 
-        res.writeHead(500, { "Content-Type": "text/plain" });
+        res.writeHead(SERVER_ERROR, {
+          "Content-Type": "text/plain"
+        });
+        
         return res.end("Something went wrong");
       }
-    }
-
-    else if (req.method === "DELETE" && parsedURL.pathname === "/") {
+    } else if (req.method === "DELETE" && parsedURL.pathname === "/") {
       const id = parsedURL.searchParams.get("id");
 
       const userId = Number(id);
 
       if (!id || Number.isNaN(userId)) {
-        res.writeHead(400, { "Content-Type": "text/plain" });
+        res.writeHead(BAD_REQUEST_ERROR, {
+          "Content-Type": "text/plain"
+        });
+        
         return res.end("Missing or invalid ID");
       }
 
@@ -94,28 +111,38 @@ const server = http.createServer(
         const result = query.get({ id: userId });
 
         if (!result) {
-          res.writeHead(404, { "Content-Type": "text/plain" });
+          res.writeHead(NOT_FOUND_ERROR, {
+            "Content-Type": "text/plain"
+          });
+          
           return res.end("User not found");
         }
 
         console.log(`The message with ID ${userId} was successfully deleted!`);
 
-        res.writeHead(200, { "Content-Type": "application/json" });
+        res.writeHead(OK, { "Content-Type": "application/json" });
+        
         return res.end(
           JSON.stringify({
             success: true,
-            deletedUser: result,
-          }),
+            deletedUser: result
+          })
         );
       } catch (error) {
         console.error("Error executing SQLite DELETE query:", error);
 
-        res.writeHead(500, { "Content-Type": "text/plain" });
+        res.writeHead(SERVER_ERROR, {
+          "Content-Type": "text/plain"
+        });
+        
         return res.end("Something went wrong");
       }
     }
 
-    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.writeHead(NOT_FOUND_ERROR, {
+      "Content-Type": "text/plain"
+    });
+
     res.end("Route not found");
   },
 );
