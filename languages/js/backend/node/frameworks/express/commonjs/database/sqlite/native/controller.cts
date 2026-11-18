@@ -72,7 +72,7 @@ function createUserMessageController(
   const removeUserMessage: RequestHandler = (req, res) => {
     const userId = Number(req.params.id);
 
-    if (!Number.isInteger(userId) || userId <= 0) {
+    if (!Number.isSafeInteger(userId) || userId <= 0) {
       return res.status(BAD_REQUEST_ERROR).send("Missing or invalid ID");
     }
 
