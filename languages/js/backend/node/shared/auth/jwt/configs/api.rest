@@ -2,7 +2,7 @@
 @JSONContent = application/json
 
 # This password contains a hidden message
-@password = "01101010011101110111010000100000011101110110111101110010011010110111001100100001"
+@password = "01001010 01010111 01010100 00100001"
 
 ### POST - Register an user
 POST {{baseUrl}}/register
