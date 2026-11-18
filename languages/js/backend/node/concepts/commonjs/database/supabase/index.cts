@@ -5,11 +5,15 @@ import type { UserMessageValidation } from "../../../../shared/database/user.mes
 const http = require("node:http");
 
 const { supabase } = require("../../../../shared/database/supabase/db.ts");
+
+const { StatusCodes } = require("../../../../shared/types.ts");
 const { VALID_PORT } = require("../../../../shared/server/port.ts");
 
 const server = http.createServer(
   async (req: IncomingMessage, res: ServerResponse) => {
-    try {
+    const { OK, CREATED, NOT_FOUND_ERROR, SERVER_ERROR } = StatusCodes
+    
+    try {  
       if (req.method === "GET" && req.url === "/") {
         const { data, error } = await supabase
           .from("supabase")
@@ -18,29 +22,29 @@ const server = http.createServer(
         if (error) {
           console.error("Error fetching data:", error);
 
-          res.writeHead(500, {
-            "Content-Type": "application/json",
+          res.writeHead(SERVER_ERROR, {
+            "Content-Type": "application/json"
           });
 
           return res.end(
             JSON.stringify({
               success: false,
-              error: "Error fetching data",
-            }),
+              error: "Error fetching data"
+            })
           );
         }
 
         console.log(data);
 
-        res.writeHead(200, {
-          "Content-Type": "application/json",
+        res.writeHead(OK, {
+          "Content-Type": "application/json"
         });
 
         return res.end(
           JSON.stringify({
             success: true,
-            data,
-          }),
+            data
+          })
         );
       }
 
@@ -48,7 +52,7 @@ const server = http.createServer(
         const newUser: UserMessageValidation = {
           username: "thiagond",
           email: "thiagond@example.com",
-          message: "User created with POST",
+          message: "User created with POST"
         };
 
         const { data, error } = await supabase
@@ -60,30 +64,30 @@ const server = http.createServer(
         if (error) {
           console.error("Error inserting data:", error);
 
-          res.writeHead(500, {
-            "Content-Type": "application/json",
+          res.writeHead(SERVER_ERROR, {
+            "Content-Type": "application/json"
           });
 
           return res.end(
             JSON.stringify({
               success: false,
-              error: "Error adding user",
-            }),
+              error: "Error adding user"
+            })
           );
         }
 
         console.log("User added:", data);
 
-        res.writeHead(201, {
-          "Content-Type": "application/json",
+        res.writeHead(CREATED, {
+          "Content-Type": "application/json"
         });
 
         return res.end(
           JSON.stringify({
             success: true,
             message: "User added successfully",
-            data,
-          }),
+            data
+          })
         );
       }
 
@@ -98,15 +102,15 @@ const server = http.createServer(
         if (findError) {
           console.error("Error finding last user:", findError);
 
-          res.writeHead(404, {
+          res.writeHead(NOT_FOUND_ERROR, {
             "Content-Type": "application/json",
           });
 
           return res.end(
             JSON.stringify({
               success: false,
-              error: "No user found",
-            }),
+              error: "No user found"
+            })
           );
         }
 
@@ -120,68 +124,68 @@ const server = http.createServer(
         if (deleteError) {
           console.error("Error deleting user:", deleteError);
 
-          res.writeHead(500, {
-            "Content-Type": "application/json",
+          res.writeHead(SERVER_ERROR, {
+            "Content-Type": "application/json"
           });
 
           return res.end(
             JSON.stringify({
               success: false,
-              error: "Error deleting user",
-            }),
+              error: "Error deleting user"
+            })
           );
         }
 
         if (!deletedUser) {
-          res.writeHead(404, {
-            "Content-Type": "application/json",
+          res.writeHead(NOT_FOUND_ERROR, {
+            "Content-Type": "application/json"
           });
 
           return res.end(
             JSON.stringify({
               success: false,
-              error: "User was already deleted",
-            }),
+              error: "User was already deleted"
+            })
           );
         }
 
         console.log("User deleted:", lastUser);
 
-        res.writeHead(200, {
-          "Content-Type": "application/json",
+        res.writeHead(OK, {
+          "Content-Type": "application/json"
         });
 
         return res.end(
           JSON.stringify({
             success: true,
             message: "Last user removed successfully",
-            data: lastUser,
-          }),
+            data: lastUser
+          })
         );
       }
 
-      res.writeHead(404, {
-        "Content-Type": "application/json",
+      res.writeHead(NOT_FOUND_ERROR, {
+        "Content-Type": "application/json"
       });
 
       return res.end(
         JSON.stringify({
           success: false,
-          error: "Route not found",
-        }),
+          error: "Route not found"
+        })
       );
     } catch (error) {
       console.error("Server error:", error);
 
-      res.writeHead(500, {
-        "Content-Type": "application/json",
+      res.writeHead(SERVER_ERROR, {
+        "Content-Type": "application/json"
       });
 
       return res.end(
         JSON.stringify({
           success: false,
-          error: "Server internal error",
-        }),
+          error: "Server internal error"
+        })
       );
     }
   },
