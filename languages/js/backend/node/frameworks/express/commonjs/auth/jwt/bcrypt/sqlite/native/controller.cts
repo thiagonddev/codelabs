@@ -9,36 +9,40 @@ import type { BaseUserValidation } from "../../../../../../../../shared/database
 import type {
   AuthUserSchema,
   AuthRegisterUserValidation,
-  AuthUserPayloadValidation,
+  AuthUserPayloadValidation
 } from "../../../../../../../../shared/auth/types";
 
 const bcrypt = require("bcrypt") as typeof Bcrypt;
 const jwt = require("jsonwebtoken") as typeof JWT;
 
 const {
-  validateUserData,
+  validateUserData
 } = require("../../../../../../../../shared/auth/validation.ts");
 
 const {
   authRegisterUserValidationSchema,
-  authLoginUserValidationSchema,
+  authLoginUserValidationSchema
 } = require("../../../../../../../../shared/auth/validation.schema.ts");
+
+const { StatusCodes } = require("../../../../../../../../shared/types.ts");
 
 function createAuthUserController(
   db: DatabaseSync,
   schema: AuthUserSchema,
-  jwtSecret: string,
+  jwtSecret: string
 ) {
+  const { CREATED, BUSINESS_ERROR, UNAUTHORIZED_ERROR, DUPLICATE_ERROR, NOT_FOUND_ERROR, SERVER_ERROR } = StatusCodes
+
   const registerAuthUser: RequestHandler = async (req, res) => {
     try {
       const userData = req.body;
 
       const valid = validateUserData(
         authRegisterUserValidationSchema,
-        userData,
+        userData
       );
 
-      if (!valid.data) return res.status(422).json(valid.errors);
+      if (!valid.data) return res.status(BUSINESS_ERROR).json(valid.errors);
 
       const { username, email, password }: AuthRegisterUserValidation =
         valid.data;
@@ -48,8 +52,8 @@ function createAuthUserController(
         .get({ username, email });
 
       if (existingUser) {
-        return res.status(409).json({
-          error: "User already exists",
+        return res.status(DUPLICATE_ERROR).json({
+          error: "User already exists"
         });
       }
 
@@ -58,13 +62,13 @@ function createAuthUserController(
       db.prepare(schema.queries.userInsert).run({
         username,
         email,
-        password: hashedPassword,
+        password: hashedPassword
       });
 
-      res.status(201).json({ username, email });
+      res.status(CREATED).json({ username, email });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Server error" });
+      res.status(SERVER_ERROR).json({ error: "Server error" });
     }
   };
 
@@ -74,7 +78,7 @@ function createAuthUserController(
 
       const valid = validateUserData(authLoginUserValidationSchema, userData);
 
-      if (!valid.data) return res.status(422).json(valid.errors);
+      if (!valid.data) return res.status(BUSINESS_ERROR).json(valid.errors);
 
       const { username, password } = valid.data;
 
@@ -83,34 +87,34 @@ function createAuthUserController(
         .get({ username }) as AuthUserPayloadValidation | undefined;
 
       if (!user) {
-        return res.status(401).json({
-          error: "Invalid username and/or password",
+        return res.status(UNAUTHORIZED_ERROR).json({
+          error: "Invalid username and/or password"
         });
       }
 
       const passwordMatches = await bcrypt.compare(password, user.password);
 
       if (!passwordMatches) {
-        return res.status(401).json({
-          error: "Invalid username and/or password",
+        return res.status(UNAUTHORIZED_ERROR).json({
+          error: "Invalid username and/or password"
         });
       }
 
       const token = jwt.sign({ userId: user.id }, jwtSecret, {
-        expiresIn: "1h",
+        expiresIn: "1h"
       });
 
       res.json({ token });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Server error" });
+      res.status(SERVER_ERROR).json({ error: "Server error" });
     }
   };
 
   const getAuthUser: RequestHandler = (req, res) => {
     if (req.userId === undefined) {
-      return res.status(401).json({
-        error: "Unauthorized",
+      return res.status(UNAUTHORIZED_ERROR).json({
+        error: "Unauthorized"
       });
     }
 
@@ -119,8 +123,8 @@ function createAuthUserController(
       .get({ id: req.userId }) as BaseUserValidation;
 
     if (!user) {
-      return res.status(404).json({
-        error: "User not found",
+      return res.status(NOT_FOUND_ERROR).json({
+        error: "User not found"
       });
     }
 

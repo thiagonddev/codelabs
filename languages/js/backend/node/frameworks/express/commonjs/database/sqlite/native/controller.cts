@@ -6,9 +6,18 @@ import type z from "zod";
 import type { UserMessageController } from "../../../../../../shared/database/user.message.types";
 import type { UserMessageSchema } from "../../../../../../shared/database/sqlite/user.message.types";
 
-const { userMessageValidationSchema } = require("../../../../../../shared/database/user.message.validation.ts");
+const {
+  userMessageValidationSchema
+} = require("../../../../../../shared/database/user.message.validation.ts");
 
-function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema): UserMessageController {
+const { StatusCodes } = require("../../../../../../shared/types.ts");
+
+function createUserMessageController(
+  db: DatabaseSync,
+  schema: UserMessageSchema
+): UserMessageController {
+  const { CREATED, BAD_REQUEST_ERROR, BUSINESS_ERROR, NOT_FOUND_ERROR, SERVER_ERROR } = StatusCodes
+
   const getAllUserMessages: RequestHandler = (_req, res) => {
     try {
       const query = db.prepare(schema.queries.selectAllUserMessages);
@@ -24,21 +33,21 @@ function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema
       return res.json(messages);
     } catch (error) {
       console.error("Error executing SQLite SELECT * query:", error);
-      return res.status(500).send("Something went wrong");
+      return res.status(SERVER_ERROR).send("Something went wrong");
     }
   };
 
-  const createUserMessage: RequestHandler = (req, res) => { 
+  const createUserMessage: RequestHandler = (req, res) => {
     const valid = userMessageValidationSchema.safeParse(req.body);
 
     if (!valid.success) {
       console.log(valid.error.issues);
 
       const errors = valid.error.issues.map(
-        (error: z.core.$ZodIssue) => error.message
+        (error: z.core.$ZodIssue) => error.message,
       );
 
-      return res.status(422).json(errors);
+      return res.status(BUSINESS_ERROR).json(errors);
     }
 
     try {
@@ -52,19 +61,19 @@ function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema
 
       console.log(`${result.changes} message was successfully added!`);
 
-      return res.status(201).json({ success: true, result });
+      return res.status(CREATED).json({ success: true, result });
     } catch (error) {
       console.error("Error executing SQLite INSERT query:", error);
 
-      return res.status(500).send("Something went wrong");
+      return res.status(SERVER_ERROR).send("Something went wrong");
     }
-  }
+  };
 
   const removeUserMessage: RequestHandler = (req, res) => {
     const userId = Number(req.params.id);
 
     if (!Number.isInteger(userId) || userId <= 0) {
-      return res.status(400).send("Missing or invalid ID");
+      return res.status(BAD_REQUEST_ERROR).send("Missing or invalid ID");
     }
 
     try {
@@ -73,7 +82,7 @@ function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema
       const result = query.get({ id: userId });
 
       if (!result) {
-        return res.status(404).send("User not found");
+        return res.status(NOT_FOUND_ERROR).send("User not found");
       }
 
       console.log(`The message with ID ${userId} was successfully deleted!`);
@@ -85,11 +94,11 @@ function createUserMessageController(db: DatabaseSync, schema: UserMessageSchema
     } catch (error) {
       console.error("Error executing SQLite DELETE query:", error);
 
-      return res.status(500).send("Something went wrong");
+      return res.status(SERVER_ERROR).send("Something went wrong");
     }
-  }
+  };
 
-  return { getAllUserMessages, createUserMessage, removeUserMessage }
+  return { getAllUserMessages, createUserMessage, removeUserMessage };
 }
 
-export = createUserMessageController
+module.exports = createUserMessageController;
