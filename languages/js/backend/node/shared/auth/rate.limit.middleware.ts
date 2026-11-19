@@ -27,7 +27,7 @@ export function createAuthTrafficLimits() {
     windowMins: 60,
     retryAfterMins: 60,
   });
-
+  
   const authUserDashboard = enforceTrafficLimits({
     rateLimiter: {
       reqLimit: 5,

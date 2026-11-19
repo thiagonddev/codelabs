@@ -18,7 +18,6 @@ const {
 
 function createApp(db: DatabaseSync, schema: AuthUserSchema) {
   const app = express()
-  
   const { registerAuthUserLimits, loginAuthUserLimits, authUserDashboard } = createAuthTrafficLimits()
   
   app.use(cors())
