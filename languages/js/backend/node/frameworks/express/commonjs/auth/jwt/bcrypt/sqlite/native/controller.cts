@@ -8,8 +8,9 @@ import type { BaseUserValidation } from "../../../../../../../../shared/database
 
 import type {
   AuthUserSchema,
+  AuthUserController,
   AuthRegisterUserValidation,
-  AuthUserPayloadValidation
+  AuthUserPayloadValidation,
 } from "../../../../../../../../shared/auth/types";
 
 const bcrypt = require("bcrypt") as typeof Bcrypt;
@@ -30,7 +31,7 @@ function createAuthUserController(
   db: DatabaseSync,
   schema: AuthUserSchema,
   jwtSecret: string
-) {
+): AuthUserController {
   const { CREATED, BUSINESS_ERROR, UNAUTHORIZED_ERROR, DUPLICATE_ERROR, NOT_FOUND_ERROR, SERVER_ERROR } = StatusCodes
 
   const registerAuthUser: RequestHandler = async (req, res) => {
@@ -120,7 +121,7 @@ function createAuthUserController(
 
     const user = db
       .prepare(schema.queries.userPayload)
-      .get({ id: req.userId }) as BaseUserValidation;
+      .get({ id: req.userId }) as BaseUserValidation | undefined;
 
     if (!user) {
       return res.status(NOT_FOUND_ERROR).json({
