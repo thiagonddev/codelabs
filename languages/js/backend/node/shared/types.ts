@@ -6,5 +6,6 @@ export enum StatusCodes {
     NOT_FOUND_ERROR = 404,
     DUPLICATE_ERROR = 409,
     BUSINESS_ERROR = 422,
+    TOO_MANY_REQUESTS_ERROR = 429,
     SERVER_ERROR = 500
 }
