@@ -28,5 +28,18 @@ export function createAuthTrafficLimits() {
     retryAfterMins: 60,
   });
 
-  return { registerAuthUserLimits, loginAuthUserLimits };
+  const authUserDashboard = enforceTrafficLimits({
+    rateLimiter: {
+      reqLimit: 5,
+    },
+    speedLimiter: {
+      reqLimitToDelay: 3,
+      delayMs: 500,
+    },
+
+    windowMins: 60,
+    retryAfterMins: 60,
+  });
+
+  return { registerAuthUserLimits, loginAuthUserLimits, authUserDashboard };
 }

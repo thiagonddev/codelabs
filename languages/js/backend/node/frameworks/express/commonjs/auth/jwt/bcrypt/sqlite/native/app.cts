@@ -19,14 +19,15 @@ const {
 function createApp(db: DatabaseSync, schema: AuthUserSchema) {
   const app = express()
   
-  const { registerAuthUserLimits, loginAuthUserLimits } = createAuthTrafficLimits()
+  const { registerAuthUserLimits, loginAuthUserLimits, authUserDashboard } = createAuthTrafficLimits()
   
   app.use(cors())
   app.use(helmet())
 
   app.use('/register', registerAuthUserLimits.rateLimiter, registerAuthUserLimits.speedLimiter)
   app.use('/login', loginAuthUserLimits.rateLimiter, loginAuthUserLimits.speedLimiter)
-  
+  app.use('/me', authUserDashboard.rateLimiter, authUserDashboard.speedLimiter)
+
   app.use(express.json())
   
   app.use('/', createAuthUserRoutes(db, schema))
