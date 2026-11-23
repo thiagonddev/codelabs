@@ -10,18 +10,22 @@ const {
   userMessageValidationSchema
 } = require("../../../../../../shared/database/user.message.validation.ts");
 
+const createUserMessageRepository = require("./repository.cjs");
+
 const { StatusCodes } = require("../../../../../../shared/types.ts");
 
 function createUserMessageController(
   db: DatabaseSync,
   schema: UserMessageSchema
 ): UserMessageController {
-  const { CREATED, BAD_REQUEST_ERROR, BUSINESS_ERROR, NOT_FOUND_ERROR, SERVER_ERROR } = StatusCodes
 
-  const getAllUserMessages: RequestHandler = (_req, res) => {
+  const { findAll, create, deleteById } = createUserMessageRepository(db, schema)
+
+  const { CREATED, BAD_REQUEST_ERROR, BUSINESS_ERROR, NOT_FOUND_ERROR, SERVER_ERROR } = StatusCodes
+  
+  const indexUserMessages: RequestHandler = (_req, res) => {
     try {
-      const query = db.prepare(schema.queries.selectAllUserMessages);
-      const messages = query.all();
+      const messages = findAll()
 
       if (messages.length === 0) {
         return res.send("No messages were found");
@@ -37,7 +41,7 @@ function createUserMessageController(
     }
   };
 
-  const createUserMessage: RequestHandler = (req, res) => {
+  const storeUserMessage: RequestHandler = (req, res) => {
     const valid = userMessageValidationSchema.safeParse(req.body);
 
     if (!valid.success) {
@@ -51,9 +55,7 @@ function createUserMessageController(
     }
 
     try {
-      const query = db.prepare(schema.queries.insertUserMessage);
-
-      const result = query.run(valid.data);
+      const result = create(valid)
 
       if (result.changes === 0) {
         throw new Error("No changes were made");
@@ -69,7 +71,7 @@ function createUserMessageController(
     }
   };
 
-  const removeUserMessage: RequestHandler = (req, res) => {
+  const deleteUserMessage: RequestHandler = (req, res) => {
     const userId = Number(req.params.id);
 
     if (!Number.isSafeInteger(userId) || userId <= 0) {
@@ -77,9 +79,7 @@ function createUserMessageController(
     }
 
     try {
-      const query = db.prepare(schema.queries.deleteUserMessage);
-
-      const result = query.get({ id: userId });
+      const result = deleteById(userId)
 
       if (!result) {
         return res.status(NOT_FOUND_ERROR).send("User not found");
@@ -98,7 +98,7 @@ function createUserMessageController(
     }
   };
 
-  return { getAllUserMessages, createUserMessage, removeUserMessage };
+  return { indexUserMessages, storeUserMessage, deleteUserMessage };
 }
 
 module.exports = createUserMessageController;

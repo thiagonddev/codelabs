@@ -12,11 +12,11 @@ function createUserMessageRoutes(db: DatabaseSync, schema: UserMessageSchema) {
 
   const controller = createUserMessageController(db, schema);
 
-  router.get("/", controller.getAllUserMessages);
+  router.get("/", controller.indexUserMessages);
 
-  router.post("/", controller.createUserMessage);
+  router.post("/", controller.storeUserMessage);
 
-  router.delete("/:id", controller.removeUserMessage);
+  router.delete("/:id", controller.deleteUserMessage);
 
   return router;
 }
