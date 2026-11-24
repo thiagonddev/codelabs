@@ -1,12 +1,12 @@
 {
   "name": "opsys",
-  "version": "1.0.0",
   "description": "",
+  "version": "1.0.0",
   "author": "Thiago Nogueira",
-  "type": "commonjs",
   "main": "index.cts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --import=tsx --watch index.cts"
-  }
+    "dev": "node --import=tsx --watch index.cts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "commonjs"
 }

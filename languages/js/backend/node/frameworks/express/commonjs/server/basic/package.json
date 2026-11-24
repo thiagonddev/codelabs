@@ -1,12 +1,12 @@
 {
   "name": "basic-server",
-  "version": "1.0.0",
   "description": "",
-  "license": "ISC",
+  "version": "1.0.0",
   "author": "Thiago Nogueira",
-  "type": "commonjs",
+  "license": "ISC",
   "main": "server.cts",
   "scripts": {
     "dev": "node --import=tsx --watch --env-file=../../../../../shared/server/configs/.env.example server.cts"
-  }
+  },
+  "type": "commonjs"
 }

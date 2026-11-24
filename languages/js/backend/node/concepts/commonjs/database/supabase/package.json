@@ -1,14 +1,14 @@
 {
   "name": "node-supabase",
-  "version": "1.0.0",
   "description": "A brief description of my Node.js application",
-  "main": "index.cts",
-  "type": "commonjs",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --import=tsx --watch --env-file=../../../../shared/server/configs/.env.example --env-file=../../../../shared/database/supabase/configs/.env index.cts"
-  },
-  "keywords": [],
+  "version": "1.0.0",
   "author": "Thiago Nogueira",
-  "license": "ISC"
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.cts",
+  "scripts": {
+    "dev": "node --import=tsx --watch --env-file=../../../../shared/server/configs/.env.example --env-file=../../../../shared/database/supabase/configs/.env index.cts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "commonjs"
 }

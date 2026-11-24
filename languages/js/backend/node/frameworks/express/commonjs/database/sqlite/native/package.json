@@ -1,11 +1,11 @@
 {
   "name": "express-native-sqlite",
-  "version": "1.0.0",
   "description": "",
+  "version": "1.0.0",
   "author": "Thiago Nogueira",
-  "type": "commonjs",
   "main": "server.cts",
   "scripts": {
     "dev": "node --import=tsx --watch --env-file=../../../../../../shared/server/configs/.env.example server.cts"
-  }
+  },
+  "type": "commonjs"
 }

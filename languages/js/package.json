@@ -1,22 +1,26 @@
 {
-  "engines": {
-    "node": ">=26.13.1"
-  },
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+  "dependencies": {
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^26.6.5",
     "jest": "^30.5.2",
     "node-notifier": "^10.0.0",
+    "syncpack": "^15.3.4",
     "ts-jest": "^29.4.15",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
-  "dependencies": {
-    "zod": "^4.6.7"
+  "engines": {
+    "node": ">=26.13.1"
+  },
+  "scripts": {
+    "sync:fix": "syncpack fix",
+    "sync:format": "syncpack format",
+    "sync:lint": "syncpack lint",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   }
 }
