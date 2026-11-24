@@ -1,13 +1,13 @@
 {
-  "engines": {
-    "node": ">=26.13.1"
+  "dependencies": {
+    "cors": "^2.8.6",
+    "helmet": "^8.3.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/node": "^26.6.5"
   },
-  "dependencies": {
-    "cors": "^2.8.6",
-    "helmet": "^8.3.0"
+  "engines": {
+    "node": ">=26.13.1"
   }
 }

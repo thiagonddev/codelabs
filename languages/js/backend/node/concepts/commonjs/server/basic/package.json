@@ -1,13 +1,13 @@
 {
   "name": "server-basic",
-  "version": "1.0.0",
   "description": "",
-  "license": "ISC",
+  "version": "1.0.0",
   "author": "Thiago Nogueira",
-  "type": "commonjs",
+  "license": "ISC",
   "main": "index.cts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --import=tsx --watch --env-file=../../../../shared/server/configs/.env.example index.cts"
-  }
+    "dev": "node --import=tsx --watch --env-file=../../../../shared/server/configs/.env.example index.cts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "commonjs"
 }
