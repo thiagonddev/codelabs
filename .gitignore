@@ -17,3 +17,6 @@ coverage/
 
 # Ignore text files
 *.txt
+
+# Ignore bundle files
+*.bundle
