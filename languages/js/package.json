@@ -4,8 +4,9 @@
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/node": "^26.6.5",
+    "@types/node": "^26.6.7",
     "jest": "^30.5.2",
+    "knip": "^6.48.0",
     "node-notifier": "^10.0.0",
     "syncpack": "^15.3.4",
     "ts-jest": "^29.4.15",
@@ -16,6 +17,10 @@
     "node": ">=26.13.1"
   },
   "scripts": {
+    "knip": "knip",
+    "knip:fix": "knip --fix --exports",
+    "knip:debug": "knip --debug",
+    "knip:dependencies": "knip --dependencies",
     "sync:fix": "syncpack fix",
     "sync:format": "syncpack format",
     "sync:lint": "syncpack lint",
