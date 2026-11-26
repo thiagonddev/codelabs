@@ -1,14 +1,14 @@
 import type { RateLimitRequestHandler } from 'express-rate-limit';
 import type { SlowDownRequestHandler } from 'express-slow-down';
 
-import type { TrafficLimits } from './rate.limit.types'
+import type { TrafficLimits, EnforceTrafficLimits } from "./rate.limit.types";
 
 import rateLimit from 'express-rate-limit'
 import slowDown from 'express-slow-down'
 
 import { StatusCodes } from './types';
 
-export function enforceTrafficLimits(options: TrafficLimits) {
+export function enforceTrafficLimits(options: TrafficLimits): EnforceTrafficLimits {
     const rateLimiter: RateLimitRequestHandler = rateLimit({
       limit: options.rateLimiter.reqLimit ?? undefined,
       windowMs: options.windowMins * 60 * 1000,
