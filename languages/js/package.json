@@ -6,6 +6,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^26.6.7",
     "jest": "^30.5.2",
+    "jest-resolve": "^30.5.1",
     "knip": "^6.48.0",
     "node-notifier": "^10.0.0",
     "syncpack": "^15.3.4",
