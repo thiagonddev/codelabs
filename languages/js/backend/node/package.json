@@ -5,7 +5,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
-    "@types/node": "^26.6.5"
+    "@types/node": "^26.6.7"
   },
   "engines": {
     "node": ">=26.13.1"
